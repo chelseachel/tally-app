@@ -1,4 +1,5 @@
 # tally-app
+![proto](./prototype.gif)
 
 ## Project setup
 ```
