@@ -1,7 +1,7 @@
 # tally-app
 
 ![proto](./prototype.gif)  
-早期的Axure原型设计    
+早期的Axure交互原型    
   
 修改后的最终demo    
 
