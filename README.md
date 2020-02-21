@@ -1,5 +1,9 @@
 # tally-app
-![proto](./prototype.gif)
+
+![proto](./prototype.gif)  
+早期的原型设计    
+  
+修改后的最终demo    
 
 ## Project setup
 ```
