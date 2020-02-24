@@ -1,5 +1,9 @@
 # tally-app
 
+![proto](./prototype.gif)  
+早期创建的Axure原型 交互概念 
+  
+经过调整后，最终的demo    
 
 ## Project setup
 ```
