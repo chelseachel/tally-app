@@ -33,6 +33,8 @@ export default {
     handleTouchStart () {
       this.touchstart = true
     }
+
+    
   }
 }
 </script>
