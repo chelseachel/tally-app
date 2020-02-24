@@ -1,17 +1,18 @@
 <template>
-  <div class="item">\
+  <div class="item-edit">
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'TallyItem',
+  name: 'TallyEdit',
   components: {
   }
 }
 </script>
-
+import
 <style lang="stylus" scoped>
+  @import '~@/assets/styles/variables.styl'
   
 </style>
