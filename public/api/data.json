@@ -1,0 +1,43 @@
+{
+  "ret": true,
+  "data": {
+    "lists": [{
+      "id": "001",
+      "name": "Furniture",
+      "content": [{
+        "info": "Double Bed",
+        "price": "5800",
+        "num": 1
+      },{
+        "info": "Armchair",
+        "price": "1280",
+        "num": 3
+      },{
+        "info": "Chair",
+        "price": "580",
+        "num": 5
+      },{
+        "info": "Bookshelf",
+        "price": "345.67",
+        "num": 6
+      }]
+    }, {
+      "id": "002",
+      "name": "Necessities",
+      "content": []
+    }, {
+      "id": "003",
+      "name": "Meals",
+      "content": []
+    },
+      {
+      "id": "004",
+      "name": "Travel",
+      "content": []
+    }, {
+      "id": "005",
+      "name": "Books",
+      "content": []
+    }]
+  }  
+}

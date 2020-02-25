@@ -1,15 +1,16 @@
 <template>
   <div class="item-bg">
     <div 
-      class="item-drag" 
+      class="item-drag"
+      :style="translateX"
       @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
       >
-      <div class="item-info">Double Bed</div>
-      <div class="item-price">¥5800.00</div>   
+      <div class="item-info">{{item.info}}</div>
+      <div class="item-price">{{showPrice}}</div>   
     </div>
-    <span class="num">0</span>
+    <span class="num" ref="num">{{num}}</span>
   </div>
 </template>
 
@@ -17,25 +18,51 @@
 
 export default {
   name: 'TallyItem',
+  props: {
+    item: Object
+  },
   components: {
   },
   data () {
     return {
-      info: '',
-      price: '',
-      num: '',
-      // draggable: true,
+      num: this.item.num,
       touchStatus: false,
-      touchX: 0
+      startX: 0,
+      translateX:''
     }
   },
   methods: {
-    handleTouchStart () {
-      this.touchstart = true
+    handleTouchStart (e) {
+      this.touchStatus = true
+      this.startX = e.touches[0].clientX;
+      this.lastNum = this.num
+      
+    },
+    handleTouchMove (e) {
+      if(this.touchStatus) {
+        const touchX = e.touches[0].clientX
+        const disX = touchX > 40 ? this.startX - touchX : this.startX - 40
+        if (disX > 0) {
+          this.translateX = `transform:translateX(-${disX}px)`
+          const add = Math.ceil((disX-10)/30)
+          this.num = add + this.lastNum
+        } else {
+          this.translateX = "transform:translateX(0px)"
+        }
+      }
+    },
+    handleTouchEnd () {
+      this.translateX = "transform:translateX(0px)"
     }
-
-    
-  }
+  },
+  computed: {
+    showPrice: function () {
+      return `¥${parseFloat(this.item.price).toFixed(2)}`
+    }
+  },
+  // mounted () {
+  //   console.log(this.num)
+  // }
 }
 </script>
 import

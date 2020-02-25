@@ -1,14 +1,7 @@
 <template>
   <div class="home">
     <div class="title">My Lists</div>
-    <div class="container">
-      <home-grid></home-grid>
-      <home-grid></home-grid>
-      <home-grid></home-grid>
-      <home-grid></home-grid>
-      <home-grid></home-grid>
-      <span class='underline'></span>  
-    </div>
+    <home-grid :mylists="lists"></home-grid>
     <div class="iconfont iconadd3"></div>
   </div>
 </template>
@@ -19,6 +12,57 @@ export default {
   name: 'Home',
   components: {
     HomeGrid
+  },
+  data () {
+    return {
+      lists: [{
+        id: "001",
+        name: "Furniture",
+        content: [{
+          info: "Double Bed",
+          price: "5800",
+          num: 1
+        },{
+          info: "Armchair",
+          price: "1280",
+          num: 3
+        },{
+          info: "Chair",
+          price: "580",
+          num: 5
+        },{
+          info: "Bookshelf",
+          price: "345.67",
+          num: 6
+        }]
+      }, {
+        id: "002",
+        name: "Necessities",
+        content: []
+      }, {
+        id: "003",
+        name: "Meals",
+        content: []
+      },
+        {
+        id: "004",
+        name: "Travel",
+        content: []
+      }, {
+        id: "005",
+        name: "Books",
+        content: []
+      }]
+    }
+  },
+  computed: {
+    // mylists () {
+    //   const mylists = []
+    //   for (let i in this.lists) {
+    //     mylists.push(i)
+    //   }
+    //   return mylists
+    // }
   }
 }
 </script>
@@ -33,21 +77,6 @@ export default {
     font-weight: 800
     margin-left: 8.6%
     z-index: 10
-  .container
-    position: relative
-    top: 1.72rem
-    width: 92%
-    margin: 0 4%
-    display: flex
-    flex-wrap: wrap
-    .home-grid:nth-child(odd)
-      border-right: .02rem solid #eee
-    .underline
-      position: relative
-      top: -.04rem
-      width: 100%
-      height: .04rem
-      background: #fff
   .iconadd3
     position: fixed
     bottom: .6rem
