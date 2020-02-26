@@ -1,13 +1,13 @@
 <template>
   <div>
     <ul class="container">
-      <router-link tag="li" :to="'/list/' + item.id" 
+      <router-link tag="li" :to="'/list/' + index" 
       class="grid" 
-      v-for="(item, index) in mylists" :key="item.id"
-      @click="handleStoreId(index)"
+      v-for="(item, index) in lists" :key="index"
+      @click.native="handleStoreIndex(index)"
       >
         <p class="grid-title">{{item.name}}</p>
-        <p class="grid-item">{{item.id}}</p>
+        <p class="grid-item">{{item.content.length}} ITEMS</p>
       </router-link>
     </ul>
     <span class='underline'></span> 
@@ -15,17 +15,25 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex'
 export default {
   name: 'HomeGrid',
   props : {
     mylists: Array
   },
   methods: {
-    handleStoreId(index) {
+    handleStoreIndex(index) {
       console.log(index)
-      this.$store.commit('changeId', index)
+      this.$store.commit('changeIndex', index)
     }
+  },
+  computed: {
+    ...mapState([
+      'lists'
+    ])
+  },
+  mounted () {
+    console.log(this.index)
   }
 }
 </script>

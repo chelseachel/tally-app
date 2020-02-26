@@ -1,8 +1,7 @@
 <template>
   <div class="header">
-    <div class="iconfont iconmenu1"></div>
+    <router-link tag="div" to="/" class="iconfont iconmenu1"></router-link>
     <div class="iconfont iconother"></div>
-    <div class="iconfont iconadd1"></div>
   </div>
 </template>
 
@@ -22,7 +21,8 @@ import
     top: 0
     width: 100%
     height: 1rem
-    z-index: 999
+    background: #fff
+    z-index: 99
     .iconmenu1
       height: 1rem
       line-height: 1rem
@@ -36,12 +36,5 @@ import
       float: right
       margin-right: .24rem
       font-size: .64rem
-      color: #aaa
-    .iconadd1
-      height: 1rem
-      line-height: 1rem
-      float: right
-      margin-right: .2rem
-      font-size: .54rem
       color: #aaa
 </style>

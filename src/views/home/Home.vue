@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <div class="title">My Lists</div>
-    <home-grid :mylists="lists"></home-grid>
+    <div class="title">Tally Lists</div>
+    <home-grid></home-grid>
     <div class="iconfont iconadd3"></div>
   </div>
 </template>
@@ -15,54 +15,8 @@ export default {
   },
   data () {
     return {
-      lists: [{
-        id: "001",
-        name: "Furniture",
-        content: [{
-          info: "Double Bed",
-          price: "5800",
-          num: 1
-        },{
-          info: "Armchair",
-          price: "1280",
-          num: 3
-        },{
-          info: "Chair",
-          price: "580",
-          num: 5
-        },{
-          info: "Bookshelf",
-          price: "345.67",
-          num: 6
-        }]
-      }, {
-        id: "002",
-        name: "Necessities",
-        content: []
-      }, {
-        id: "003",
-        name: "Meals",
-        content: []
-      },
-        {
-        id: "004",
-        name: "Travel",
-        content: []
-      }, {
-        id: "005",
-        name: "Books",
-        content: []
-      }]
+      
     }
-  },
-  computed: {
-    // mylists () {
-    //   const mylists = []
-    //   for (let i in this.lists) {
-    //     mylists.push(i)
-    //   }
-    //   return mylists
-    // }
   }
 }
 </script>
@@ -71,11 +25,14 @@ export default {
 @import '~@/assets/styles/variables.styl'
   .title
     position: fixed
+    width: 100%
     height: 1.72rem
     line-height: 1.72rem
     font-size: .48rem
     font-weight: 800
-    margin-left: 8.6%
+    box-sizing: border-box
+    padding-left: 8.6%
+    background: #fff
     z-index: 10
   .iconadd3
     position: fixed

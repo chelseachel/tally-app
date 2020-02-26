@@ -1,7 +1,7 @@
 <template>
   <div class="title">
-    <div class="name">Furniture</div>
-    <div class="total">¥0.00
+    <div class="name">{{name}}</div>
+    <div class="total">{{showTotal}}
       <span class="desc">total</span>
     </div>
   </div>
@@ -11,7 +11,14 @@
 
 export default {
   name: 'TallyTitle',
-  components: {
+  props: {
+    name: String,
+    total: Number
+  },
+  computed: {
+    showTotal: function () {
+      return `¥${parseFloat(this.total).toFixed(2)}`
+    }
   }
 }
 </script>
@@ -23,8 +30,19 @@ import
     top: 1rem
     width: 100%
     height: 1.4rem
+    padding-bottom: .26rem
+    background: #fff
     display: flex
-    z-index: 999
+    z-index: 99
+    &:before
+      content: ""
+      position: absolute
+      bottom: 0
+      width: 100%
+      height: 1px
+      box-sizing: border-box
+      margin-left: .24rem
+      background: #f4f4f4
     .name
       flex: 1
       height: 1.4rem

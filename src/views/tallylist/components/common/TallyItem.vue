@@ -3,32 +3,42 @@
     <div 
       class="item-drag"
       :style="translateX"
-      @touchstart.prevent="handleTouchStart"
+      @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
+      @click="handleEditClick"
       >
       <div class="item-info">{{item.info}}</div>
       <div class="item-price">{{showPrice}}</div>   
     </div>
-    <span class="num" ref="num">{{num}}</span>
+    <input class="num" type="text" name="num" v-model="num">
+    <tally-edit 
+    v-show="showEdit" 
+    @close="handleCloseItem" 
+    @editItem="handleEditItem"
+    @delete="handleDeleteItem"
+    :existItem="this.item.info" 
+    :existPrice="this.item.price"></tally-edit>
   </div>
 </template>
 
 <script>
-
+import TallyEdit from './TallyEdit.vue'
 export default {
   name: 'TallyItem',
   props: {
     item: Object
   },
   components: {
+    TallyEdit
   },
   data () {
     return {
       num: this.item.num,
       touchStatus: false,
       startX: 0,
-      translateX:''
+      translateX:'',
+      showEdit: false
     }
   },
   methods: {
@@ -36,7 +46,6 @@ export default {
       this.touchStatus = true
       this.startX = e.touches[0].clientX;
       this.lastNum = this.num
-      
     },
     handleTouchMove (e) {
       if(this.touchStatus) {
@@ -44,8 +53,8 @@ export default {
         const disX = touchX > 40 ? this.startX - touchX : this.startX - 40
         if (disX > 0) {
           this.translateX = `transform:translateX(-${disX}px)`
-          const add = Math.ceil((disX-10)/30)
-          this.num = add + this.lastNum
+          const add = Math.floor(disX/30)
+          this.num = add + this.lastNum        
         } else {
           this.translateX = "transform:translateX(0px)"
         }
@@ -53,6 +62,21 @@ export default {
     },
     handleTouchEnd () {
       this.translateX = "transform:translateX(0px)"
+    },
+    handleEditClick () {
+      this.showEdit = true
+    },
+    handleCloseItem () {
+      this.showEdit = false
+    },
+    handleEditItem (info, price) {
+      this.item.info = info
+      this.item.price = price
+      this.showEdit = false
+    },
+    handleDeleteItem () {
+      this.showEdit = false
+      this.$emit('delete')
     }
   },
   computed: {
@@ -60,9 +84,9 @@ export default {
       return `¥${parseFloat(this.item.price).toFixed(2)}`
     }
   },
-  // mounted () {
-  //   console.log(this.num)
-  // }
+  updated () {
+    this.item.num = this.num
+  }
 }
 </script>
 import
@@ -101,9 +125,12 @@ import
         text-align: right
         font-size: .28rem
         color: #D7D7D7
-    span
+    .num
+      width: 10%
       min-width: .9rem
       line-height: 1.2rem
       text-align: center
       color: #fff
+      background: transparent
+      
 </style>

@@ -5,10 +5,48 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    index: 0
+    index: 0,
+    lists: [{
+        id: "001",
+        name: "Furniture",
+        content: [{
+          info: "Double Bed",
+          price: 5800,
+          num: 1
+        },{
+          info: "Armchair",
+          price: 1280,
+          num: 3
+        },{
+          info: "Chair",
+          price: 580,
+          num: 5
+        },{
+          info: "Bookshelf",
+          price: 345.68,
+          num: 6
+        }]
+      }, {
+        id: "002",
+        name: "Necessities",
+        content: []
+      }, {
+        id: "003",
+        name: "Meals",
+        content: []
+      },
+        {
+        id: "004",
+        name: "Travel",
+        content: []
+      }, {
+        id: "005",
+        name: "Books",
+        content: []
+      }]
   },
-  mutation: {
-    changeId(state, index) {
+  mutations: {
+    changeIndex(state, index) {
       state.index = index
     }
   }
