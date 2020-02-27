@@ -1,22 +1,47 @@
 <template>
   <div class="home">
     <div class="title">Tally Lists</div>
-    <home-grid></home-grid>
-    <div class="iconfont iconadd3"></div>
+    <home-grid :lists="lists"></home-grid>
+    <div class="iconfont iconadd3" @click="handleAddClick"></div>
+    <home-new v-if="showNew" @close="handleCloseNew" @save-list="handleSaveNew"></home-new>
   </div>
 </template>
 
 <script>
 import HomeGrid from './components/HomeGrid.vue'
+import HomeNew from './components/HomeNew.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
-    HomeGrid
+    HomeGrid,
+    HomeNew
   },
   data () {
     return {
-      
+      showNew: false,
+      newlist: ""
     }
+  },
+  methods: {
+    handleAddClick () {
+      this.showNew = true
+    },
+    handleCloseNew () {
+      this.showNew = false
+    },
+    handleSaveNew (newlist) {
+      this.lists.push({
+        name: newlist,
+        content: []
+      })
+      this.showNew = false
+    }
+  },
+  computed: {
+    ...mapState([
+      'lists'
+    ])
   }
 }
 </script>
@@ -40,6 +65,6 @@ export default {
     left: 50%
     transform: translateX(-50%)
     font-size: 1rem
-    color: #aaa
+    color: $themeColor
     z-index: 2
 </style>

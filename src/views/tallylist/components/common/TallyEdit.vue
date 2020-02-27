@@ -1,26 +1,28 @@
 <template>
   <div class="container" @click="handleCloseClick">
     <div class="edit-box">
-      <div class="edit">Item
-        <input v-model="item" type="text" name="item">
+      <div class="edit">ITEM
+        <input v-model="item" type="text" name="item" ref="input">
       </div>
-      <div class="edit">Price
+      <div class="edit">PRICE
         <input v-model="price" type="text" name="price">
       </div>
       <div class="prompt" v-show="showPrompt">请输入有效的内容</div>
-      <button @click="handleSaveClick">SAVE</button>
-      <div class="iconfont icontrash" @click="$emit('delete')"></div>
+      <div class="button-wrapper">
+        <button class="remove" @click="$emit('delete')">REMOVE</button>
+        <button class="save" @click="handleSaveClick">SAVE</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'TallyEdit',
   props: {
     existItem: String, 
-    existPrice: [String, Number]
+    existPrice: [String, Number],
+    show: Boolean
   },
   data () {
     return {
@@ -41,13 +43,22 @@ export default {
       } else {
         if(this.existItem && this.existPrice) {
           this.showPrompt = false
-          this.$emit('editItem', this.item, this.price)
+          this.$emit('edit-item', this.item, this.price)
         } else {
           this.showPrompt = false
-          this.$emit('saveItem', this.item, this.price)
+          this.$emit('save-item', this.item, this.price)
           this.item = ""
           this.price = ""
         }
+      }
+    }
+  },
+  watch: {
+    show: function () {
+      if (this.show) {
+        this.$nextTick(function() {
+          this.$refs.input.focus()
+        }, 100)
       }
     }
   }
@@ -62,7 +73,7 @@ export default {
     right: 0
     top: 0
     bottom: 0
-    background: rgba(170,170,170,.1)
+    background: rgba(170,170,170,.2)
     z-index: 100
     .edit-box
       width: 90%
@@ -70,45 +81,49 @@ export default {
       position: absolute
       left: 50%
       top: 50%
-      padding: .8rem
-      padding-bottom: .5rem
+      padding: .6rem .9rem
       transform: translate(-50%, -50%)
       background: #fff
       border-radius: .12rem
       box-sizing: border-box
-      box-shadow: 0 .06rem .3rem -.04rem rgba(18, 22, 33, .1);
+      box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1);
       .edit
         margin-bottom: .2rem
         line-height: .56rem
+        font-size: .28rem
         color: #aaa
         input
           width: 100%
           height: .72rem
-          border: 1px solid #D7D7D7
+          border: 1px solid #eee
           border-radius: .06rem
           box-sizing: border-box
-          padding: 0 .12rem
+          padding: 0 .16rem
           -webkit-appearance: none
           outline: none
+          font-family:Avenir, Helvetica, Arial, sans-serif
           color: $color
       .prompt
         line-height: .68rem
         color: $themeColor
-      button
-        width: 1.6rem
-        height: .68rem
-        display: block
-        overflow: hidden
-        margin: .68rem auto 0
-        background: $themeColor
-        border-radius: .06rem
-        outline: none
-        color: #fff
-        letter-spacing: .02rem
-      .icontrash
-        position: absolute
-        top: .24rem
-        right: .24rem
-        font-size: .5rem
-        color: #aaa
+      .button-wrapper
+        margin-top: .5rem
+        display: flex
+        justify-content: space-around
+        button
+          padding: .1rem .36rem
+          border-radius: .68rem
+          outline: none
+          font-size: .28rem
+          color: #fff
+        .save
+          background: $themeColor
+        .remove
+          background: #D7D7D7
+      // .icontrash
+      //   position: absolute
+      //   top: .24rem
+      //   right: .24rem
+      //   font-size: .5rem
+      //   color: #aaa
 </style>

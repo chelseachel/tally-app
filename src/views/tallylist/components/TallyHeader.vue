@@ -1,19 +1,20 @@
 <template>
   <div class="header">
     <router-link tag="div" to="/" class="iconfont iconmenu1"></router-link>
-    <div class="iconfont iconother"></div>
+    <div class="iconfont iconswitch" @click="handleShowClick"></div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'TallyHeader',
-  components: {
+  methods: {
+    handleShowClick () {
+      this.$emit('showmore')
+    }
   }
 }
 </script>
-import
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   .header
@@ -30,11 +31,11 @@ import
       margin-left: .36rem
       font-size: .36rem
       color: #aaa
-    .iconother
+    .iconswitch
       height: 1rem
       line-height: 1rem
       float: right
       margin-right: .24rem
-      font-size: .64rem
-      color: #aaa
+      font-size: .46rem
+      color: #aaa     
 </style>

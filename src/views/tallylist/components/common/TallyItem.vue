@@ -11,11 +11,12 @@
       <div class="item-info">{{item.info}}</div>
       <div class="item-price">{{showPrice}}</div>   
     </div>
-    <input class="num" type="text" name="num" v-model="num">
+    <span class="num" ref="num">{{num}}</span>
     <tally-edit 
+    :show="showEdit"
     v-show="showEdit" 
     @close="handleCloseItem" 
-    @editItem="handleEditItem"
+    @edit-item="handleEditItem"
     @delete="handleDeleteItem"
     :existItem="this.item.info" 
     :existPrice="this.item.price"></tally-edit>
@@ -38,7 +39,7 @@ export default {
       touchStatus: false,
       startX: 0,
       translateX:'',
-      showEdit: false
+      showEdit: false,
     }
   },
   methods: {
@@ -49,14 +50,19 @@ export default {
     },
     handleTouchMove (e) {
       if(this.touchStatus) {
+        const numWidth = this.$refs.num.offsetWidth
         const touchX = e.touches[0].clientX
-        const disX = touchX > 40 ? this.startX - touchX : this.startX - 40
-        if (disX > 0) {
-          this.translateX = `transform:translateX(-${disX}px)`
-          const add = Math.floor(disX/30)
+        const disX = touchX > 40 ? touchX - this.startX : 40 - this.startX
+        this.translateX = `transform:translateX(${disX}px)`
+        if (disX <= 0) {
+          const add = Math.floor(-disX/30)
           this.num = add + this.lastNum        
-        } else {
-          this.translateX = "transform:translateX(0px)"
+        }
+        else if (disX >= 40) {
+          this.num = 0
+          if (disX >= numWidth) {
+            this.translateX = `transform:translateX(${numWidth}px)`
+          }
         }
       }
     },
@@ -99,20 +105,14 @@ import
     background: $color1
     display: flex
     overflow: hidden
-    &:before
-      content: ""
-      position: absolute
-      top: 0
-      width: 100%
-      height: 1px
-      margin-left: .24rem
-      background: #f4f4f4
-      z-index: 10
     .item-drag
       flex: 1
       height: 1.2rem
       line-height: 1.2rem
       background: #fff
+      box-sizing: border-box
+      border-bottom: 1px solid #fafafa
+      font-size: .32rem
       display: flex
       z-index: 2      
       .item-info
@@ -126,10 +126,11 @@ import
         font-size: .28rem
         color: #D7D7D7
     .num
-      width: 10%
       min-width: .9rem
       line-height: 1.2rem
       text-align: center
+      font-size: .36rem
+      font-weight: 500
       color: #fff
       background: transparent
       

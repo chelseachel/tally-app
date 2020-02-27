@@ -29,15 +29,6 @@ export default {
 <style lang="stylus" scoped>
   .item-wrapper
     position: relative
-    margin-top: 2.64rem
+    margin-top: 2.6rem
     overflow: hidden
-    &:before
-      content: ""
-      position: absolute
-      bottom: 0
-      width: 100%
-      height: 1px
-      margin-left: .24rem
-      background: #f4f4f4
-      z-index: 20
 </style>

@@ -15,25 +15,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'HomeGrid',
   props : {
-    mylists: Array
+    lists: Array
   },
   methods: {
     handleStoreIndex(index) {
       console.log(index)
       this.$store.commit('changeIndex', index)
     }
-  },
-  computed: {
-    ...mapState([
-      'lists'
-    ])
-  },
-  mounted () {
-    console.log(this.index)
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="container" @click="handleCloseClick">
-    <input class="newlist" ref="input" v-model="newlist">
+    <input class="name" ref="input" v-model="newName">
     <button @click="handleSaveClick">SAVE</button>
   </div>
 </template>
@@ -8,26 +8,33 @@
 <script>
 export default {
   name: 'HomeNew',
+  props: {
+    name: String,
+    show: Boolean
+  },
   data () {
     return {
-      newlist: ""
+      newName: this.name
     }
   },
   methods: {
     handleCloseClick (e) {
       if (e.target.className == 'container') {
         this.$emit('close')
-        this.newlist = ""
       }
     },
     handleSaveClick () {
-      this.$emit('save-list', this.newlist)
+      this.$emit('save-name', this.newName)
     }
   },
-  mounted () {
-    this.$nextTick(function() {
-      this.$refs.input.focus()
-    }, 100)
+  watch: {
+    show: function () {
+      if (this.show) {
+        this.$nextTick(function() {
+          this.$refs.input.focus()
+        }, 100)
+      }
+    }
   }
 }
 </script>
@@ -41,7 +48,7 @@ export default {
     bottom: 0
     background: rgba(170,170,170,.2)
     z-index: 100
-    .newlist
+    .name
       width: 90%
       max-width: 8rem
       height: 1.3rem

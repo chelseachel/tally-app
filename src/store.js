@@ -29,7 +29,19 @@ export default new Vuex.Store({
       }, {
         id: "002",
         name: "Necessities",
-        content: []
+        content: [{
+          info: "Tissue",
+          price: 9.9,
+          num: 4
+        }, {
+          info: "Water",
+          price: 16.8,
+          num: 2
+        }, {
+          info: "Mask",
+          price: 5,
+          num: 20
+        }]
       }, {
         id: "003",
         name: "Meals",

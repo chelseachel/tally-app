@@ -2,7 +2,7 @@
   <div class="title">
     <div class="name">{{name}}</div>
     <div class="total">{{showTotal}}
-      <span class="desc">total</span>
+      <span class="desc">Total</span>
     </div>
   </div>
 </template>
@@ -30,26 +30,26 @@ import
     top: 1rem
     width: 100%
     height: 1.4rem
-    padding-bottom: .26rem
+    padding-bottom: .2rem
     background: #fff
     display: flex
     z-index: 99
-    &:before
-      content: ""
-      position: absolute
-      bottom: 0
-      width: 100%
-      height: 1px
-      box-sizing: border-box
-      margin-left: .24rem
-      background: #f4f4f4
+    // &:before
+    //   content: ""
+    //   position: absolute
+    //   bottom: 0
+    //   width: 100%
+    //   height: 1px
+    //   box-sizing: border-box
+    //   margin-left: .24rem
+    //   background: #f4f4f4
     .name
       flex: 1
       height: 1.4rem
       line-height: 1.4rem
       margin-left: .4rem
       text-align: left
-      font-size: .44rem
+      font-size: .48rem
       font-weight: 500
     .total
       position: relative
@@ -63,7 +63,7 @@ import
       .desc
         position: absolute
         right: .02rem
-        bottom: -.36rem
+        bottom: -.4rem
         font-size: .28rem
         color: #D7D7D7
 </style>
