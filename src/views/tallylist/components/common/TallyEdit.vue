@@ -45,7 +45,6 @@ export default {
           this.showPrompt = false
           this.$emit('edit-item', this.item, this.price)
         } else {
-          console.log(this.existItem, this.existPrice);
           this.showPrompt = false
           this.$emit('save-item', this.item, this.price)
           this.item = ""

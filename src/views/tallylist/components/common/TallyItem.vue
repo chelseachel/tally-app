@@ -15,7 +15,8 @@
     <span class="num" ref="num">{{num}}</span>
     <tally-edit 
     :show="showEdit"
-    v-show="showEdit" 
+    :key="gernerateId()"
+    v-show="showEdit"
     @close="handleCloseItem" 
     @edit-item="handleEditItem"
     @delete="handleDeleteItem"
@@ -29,7 +30,8 @@ import TallyEdit from './TallyEdit.vue'
 export default {
   name: 'TallyItem',
   props: {
-    item: Object
+    item: Object,
+    name: String
   },
   components: {
     TallyEdit
@@ -84,6 +86,11 @@ export default {
     handleDeleteItem () {
       this.showEdit = false
       this.$emit('delete')
+    },
+    gernerateId () {
+      let id = this.item.info + this.name
+      // console.log(this.name);
+      return id
     }
   },
   computed: {

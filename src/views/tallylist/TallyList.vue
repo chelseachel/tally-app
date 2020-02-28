@@ -2,7 +2,7 @@
   <div class="list">
     <tally-header @showmore="handleShowMore"></tally-header>
     <tally-title :name="name" :total="total"></tally-title>
-    <tally-items :list="list"></tally-items>
+    <tally-items :list="list" :name="name" :key="name+'list'"></tally-items>
     <div class="iconfont iconadd1" @click="handleAddClick"></div>
     <!-- <div class="instruction">
       <p><b>Instructions:</b></p>
