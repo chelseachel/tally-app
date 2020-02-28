@@ -25,6 +25,7 @@ export default {
 import
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
+  @import '~@/assets/styles/mixins.styl'
   .title
     position: fixed
     top: 1rem
@@ -34,15 +35,6 @@ import
     background: #fff
     display: flex
     z-index: 99
-    // &:before
-    //   content: ""
-    //   position: absolute
-    //   bottom: 0
-    //   width: 100%
-    //   height: 1px
-    //   box-sizing: border-box
-    //   margin-left: .24rem
-    //   background: #f4f4f4
     .name
       flex: 1
       height: 1.4rem
@@ -51,6 +43,7 @@ import
       text-align: left
       font-size: .48rem
       font-weight: 500
+      ellipsis()
     .total
       position: relative
       flex: 1

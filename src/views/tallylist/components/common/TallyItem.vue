@@ -106,6 +106,7 @@ export default {
 import
 <style lang="stylus" scoped>
 @import '~@/assets/styles/variables.styl'
+@import '~@/assets/styles/mixins.styl'
   .item-bg
     position: relative
     width: 100%
@@ -128,12 +129,14 @@ import
         flex: 1
         margin-left: .4rem
         text-align: left
+        ellipsis()
       .item-price
         flex: 1
         margin-right: .52rem
         text-align: right
         font-size: .28rem
         color: #D7D7D7
+        ellipsis()
       .leftspace
         position: absolute
         left: -.9rem

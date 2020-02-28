@@ -35,6 +35,7 @@ export default {
 import
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
+  @import '~@/assets/styles/mixins.styl'
   .container
     position: relative
     top: 1.72rem
@@ -50,14 +51,18 @@ import
       height: .04rem
       background: #fff 
     .grid
-      min-width: 50%
+      width: 50%
       height: 3.4rem
       padding: .4rem
       box-sizing: border-box
       border-bottom: .02rem solid #eee
       .grid-title
+        width: 100%
+        max-height: 1.6rem
+        line-height:.4rem
         font-size: .36rem
         font-weight: 500
+        ellipsis()
       .grid-item
         margin-top: .1rem
         font-size: .26rem
