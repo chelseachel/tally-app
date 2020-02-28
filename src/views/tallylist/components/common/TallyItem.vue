@@ -9,7 +9,8 @@
       @click="handleEditClick"
       >
       <div class="item-info">{{item.info}}</div>
-      <div class="item-price">{{showPrice}}</div>   
+      <div class="item-price">{{showPrice}}</div>
+      <div class="leftspace"></div>  
     </div>
     <span class="num" ref="num">{{num}}</span>
     <tally-edit 
@@ -19,7 +20,7 @@
     @edit-item="handleEditItem"
     @delete="handleDeleteItem"
     :existItem="this.item.info" 
-    :existPrice="this.item.price"></tally-edit>
+    :existPrice="parseFloat(this.item.price)"></tally-edit>
   </div>
 </template>
 
@@ -106,6 +107,7 @@ import
     display: flex
     overflow: hidden
     .item-drag
+      position: relative
       flex: 1
       height: 1.2rem
       line-height: 1.2rem
@@ -125,7 +127,14 @@ import
         text-align: right
         font-size: .28rem
         color: #D7D7D7
+      .leftspace
+        position: absolute
+        left: -.9rem
+        width: .9rem
+        height: 1.2rem
+        background: #fff
     .num
+      width: .9rem
       min-width: .9rem
       line-height: 1.2rem
       text-align: center

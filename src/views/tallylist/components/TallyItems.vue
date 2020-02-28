@@ -1,6 +1,6 @@
 <template>
   <div class="item-wrapper">
-    <tally-item v-for="(item, index) in list" :key="index" :item="item" @delete="handleDeleteItem(index)"></tally-item>
+    <tally-item v-for="(item, index) in list" :key="gernerateId(index)" :item="item" @delete="handleDeleteItem(index)"></tally-item>
   </div>
 </template>
 
@@ -21,6 +21,10 @@ export default {
   methods: {
     handleDeleteItem (index) {
       this.list.splice(index, 1)
+    },
+    gernerateId (index) {
+      let id = this.list + index
+      return id
     }
   }
 }

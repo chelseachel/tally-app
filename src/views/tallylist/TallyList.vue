@@ -4,12 +4,12 @@
     <tally-title :name="name" :total="total"></tally-title>
     <tally-items :list="list"></tally-items>
     <div class="iconfont iconadd1" @click="handleAddClick"></div>
-    <div class="instruction">
+    <!-- <div class="instruction">
       <p><b>Instructions:</b></p>
       <p>● 左滑条目添加数量</p>
       <p>● 右滑条目数量清零</p>
       <p>● 点击条目编辑内容</p>
-    </div>
+    </div> -->
     <tally-edit 
     :show="showEdit"
     v-show="showEdit"
@@ -23,6 +23,7 @@
     <tally-name 
     :name="name" 
     :show="showName"
+    :key="name"
     v-show="showName"
     @close="handleCloseName"
     @save-name="handleSaveName"></tally-name>
@@ -88,7 +89,7 @@ export default {
     },
     handleDeleteList () {
       this.lists.splice(this.index, 1)
-    },
+    }
   }, 
   computed: {
     ...mapState([
@@ -125,9 +126,9 @@ export default {
     font-size: .9rem
     color: #aaa
     z-index: 2
-  .instruction
-    margin: .4rem
-    margin-top: .3rem
-    line-height: .6rem
-    color: #D7D7D7
+  // .instruction
+  //   margin: .4rem
+  //   margin-top: .3rem
+  //   line-height: .6rem
+  //   color: #D7D7D7
 </style>

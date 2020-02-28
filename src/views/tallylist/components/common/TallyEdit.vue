@@ -21,13 +21,13 @@ export default {
   name: 'TallyEdit',
   props: {
     existItem: String, 
-    existPrice: [String, Number],
+    existPrice: Number,
     show: Boolean
   },
   data () {
     return {
       item: this.existItem || "",
-      price: this.existPrice || "",
+      price: this.existPrice == 0 ? 0 : this.existPrice || "",
       showPrompt: false
     }
   },
@@ -41,17 +41,18 @@ export default {
       if (isNaN(this.price) || this.item.length == 0 || this.price.length == 0) {
         this.showPrompt = true       
       } else {
-        if(this.existItem && this.existPrice) {
+        if((this.existItem || this.existItem == 0) && (this.existPrice || this.existPrice == 0)) {
           this.showPrompt = false
           this.$emit('edit-item', this.item, this.price)
         } else {
+          console.log(this.existItem, this.existPrice);
           this.showPrompt = false
           this.$emit('save-item', this.item, this.price)
           this.item = ""
           this.price = ""
         }
       }
-    }
+    },
   },
   watch: {
     show: function () {

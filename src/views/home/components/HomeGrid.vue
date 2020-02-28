@@ -24,6 +24,10 @@ export default {
     handleStoreIndex(index) {
       console.log(index)
       this.$store.commit('changeIndex', index)
+    },
+    gernerateId (index) {
+      let id = this.lists + index
+      return id
     }
   }
 }

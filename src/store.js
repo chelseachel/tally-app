@@ -18,43 +18,99 @@ export default new Vuex.Store({
           price: 1280,
           num: 3
         },{
-          info: "Chair",
-          price: 580,
-          num: 5
-        },{
           info: "Bookshelf",
           price: 345.68,
           num: 6
+        },{
+          info: "左滑增加数量",
+          price: 0,
+          num: 0
+        },{
+          info: "右滑数量清零",
+          price: 0,
+          num: 0
+        },{
+          info: "点击编辑条目",
+          price: 0,
+          num: 0
         }]
       }, {
         id: "002",
         name: "Necessities",
         content: [{
           info: "Tissue",
-          price: 9.9,
+          price: 19.9,
           num: 4
-        }, {
+        },{
           info: "Water",
           price: 16.8,
           num: 2
-        }, {
+        },{
           info: "Mask",
           price: 5,
           num: 20
+        },{
+          info: "左滑增加数量",
+          price: 0,
+          num: 0
+        },{
+          info: "右滑数量清零",
+          price: 0,
+          num: 0
+        },{
+          info: "点击编辑条目",
+          price: 0,
+          num: 0
         }]
       }, {
         id: "003",
         name: "Meals",
-        content: []
+        content: [{
+          info: "左滑增加数量",
+          price: 0,
+          num: 0
+        },{
+          info: "右滑数量清零",
+          price: 0,
+          num: 0
+        },{
+          info: "点击编辑条目",
+          price: 0,
+          num: 0
+        }]
       },
         {
         id: "004",
         name: "Travel",
-        content: []
+        content: [{
+          info: "左滑增加数量",
+          price: 0,
+          num: 0
+        },{
+          info: "右滑数量清零",
+          price: 0,
+          num: 0
+        },{
+          info: "点击编辑条目",
+          price: 0,
+          num: 0
+        }]
       }, {
         id: "005",
         name: "Books",
-        content: []
+        content: [{
+          info: "左滑增加数量",
+          price: 0,
+          num: 0
+        },{
+          info: "右滑数量清零",
+          price: 0,
+          num: 0
+        },{
+          info: "点击编辑条目",
+          price: 0,
+          num: 0
+        }]
       }]
   },
   mutations: {
