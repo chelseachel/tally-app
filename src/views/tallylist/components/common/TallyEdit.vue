@@ -35,6 +35,7 @@ export default {
     handleCloseClick (e) {
       if (e.target.className == 'container') {
         this.$emit('close')
+        this.inputLoseFocus()
       }
     },
     handleSaveClick () {
@@ -50,8 +51,16 @@ export default {
           this.item = ""
           this.price = ""
         }
+        this.inputLoseFocus()
       }
     },
+    inputLoseFocus() {
+      console.log(`window.pageYOffset: ${window.pageYOffset}`)
+      window.scrollTo({
+        top: window.pageYOffset,
+        behavior: 'smooth',
+      })
+    }
   },
   watch: {
     show: function () {

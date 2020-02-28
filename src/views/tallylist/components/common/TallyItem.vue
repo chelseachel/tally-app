@@ -1,17 +1,19 @@
 <template>
   <div class="item-bg" :style="{background: this.bgcolor}">
-    <div 
-      class="item-drag"
-      :style="translateX"
-      @touchstart="handleTouchStart"
-      @touchmove="handleTouchMove"
-      @touchend="handleTouchEnd"
-      @click="handleEditClick"
-      >
-      <div class="item-info">{{item.info}}</div>
-      <div class="item-price">{{showPrice}}</div>
-      <div class="leftspace"></div>  
-    </div>
+    <transition name="slide">
+      <div 
+        class="item-drag"
+        :style="translateX"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+        @click="handleEditClick"
+        >
+        <div class="item-info">{{item.info}}</div>
+        <div class="item-price">{{showPrice}}</div>
+        <div class="leftspace"></div>  
+      </div>
+    </transition>
     <span class="num" ref="num">{{num}}</span>
     <tally-edit 
     :show="showEdit"
@@ -41,7 +43,7 @@ export default {
       num: this.item.num,
       touchStatus: false,
       startX: 0,
-      translateX:'',
+      translateX: '',
       showEdit: false,
     }
   },
@@ -50,6 +52,7 @@ export default {
       this.touchStatus = true
       this.startX = e.touches[0].clientX;
       this.lastNum = this.num
+      this.translateX = "transform:translateX(0px)"
     },
     handleTouchMove (e) {
       if(this.touchStatus) {
@@ -70,7 +73,7 @@ export default {
       }
     },
     handleTouchEnd () {
-      this.translateX = "transform:translateX(0px)"
+      this.translateX = "transform:translateX(0px);transition:all .2s ease-out"
     },
     handleEditClick () {
       this.showEdit = true
@@ -86,10 +89,17 @@ export default {
     handleDeleteItem () {
       this.showEdit = false
       this.$emit('delete')
+      this.inputLoseFocus()
+    },
+    inputLoseFocus() {
+      console.log(`window.pageYOffset: ${window.pageYOffset}`)
+      window.scrollTo({
+        top: window.pageYOffset,
+        behavior: 'smooth',
+      })
     },
     gernerateId () {
       let id = this.item.info + this.name
-      // console.log(this.name);
       return id
     }
   },
@@ -170,5 +180,6 @@ import
       font-weight: 500
       color: #fff
       background: transparent
-      
+  // .slide-enter-active
+  //     transition: transform 1s ease    
 </style>

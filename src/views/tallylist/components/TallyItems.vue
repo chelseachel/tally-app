@@ -24,7 +24,6 @@ export default {
       this.list.splice(index, 1)
     },
     gernerateId (index) {
-      console.log(this.name)
       let id = this.name + index
       return id
     }

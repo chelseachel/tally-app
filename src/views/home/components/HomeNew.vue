@@ -1,6 +1,6 @@
 <template>
   <div class="container" @click="handleCloseClick">
-    <input class="newlist" ref="input" v-model="newlist">
+    <input class="newlist" ref="input" v-model="newlist" @blur.prevent="inputLoseFocus">
     <button @click="handleSaveClick">SAVE</button>
   </div>
 </template>
@@ -22,6 +22,13 @@ export default {
     },
     handleSaveClick () {
       this.$emit('save-list', this.newlist)
+    },
+    inputLoseFocus() {
+      console.log(`window.pageYOffset: ${window.pageYOffset}`)
+      window.scrollTo({
+        top: window.pageYOffset,
+        behavior: 'smooth',
+      })
     }
   },
   mounted () {

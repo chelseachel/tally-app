@@ -31,10 +31,12 @@ export default {
       this.showNew = false
     },
     handleSaveNew (newlist) {
-      this.lists.push({
-        name: newlist,
-        content: []
-      })
+      if (newlist) {
+        this.lists.push({
+          name: newlist,
+          content: []
+        })
+      }
       this.showNew = false
     }
   },

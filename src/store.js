@@ -20,7 +20,7 @@ export default new Vuex.Store({
         },{
           info: "Bookshelf",
           price: 345.68,
-          num: 6
+          num: 5
         },{
           info: "左滑增加数量",
           price: 0,
