@@ -1,5 +1,5 @@
 <template>
-  <div class="item-bg">
+  <div class="item-bg" :style="{background: this.bgcolor}">
     <div 
       class="item-drag"
       :style="translateX"
@@ -96,6 +96,25 @@ export default {
   computed: {
     showPrice: function () {
       return `¥${parseFloat(this.item.price).toFixed(2)}`
+    },
+    bgcolor: function() {
+      let bg
+      if (this.num >= 0) {
+        bg = '#FFCC62'
+        if (this.num >= 2) {
+          bg = '#FFA655'
+          if (this.num >= 4) {
+            bg = '#FF8951'
+            if (this.num >= 6) {
+              bg = '#FE7350'
+              if (this.num >= 8) {
+                bg = '#FF5551'
+              }
+            }
+          }
+        }
+      }
+      return bg
     }
   },
   updated () {
@@ -105,13 +124,12 @@ export default {
 </script>
 import
 <style lang="stylus" scoped>
-@import '~@/assets/styles/variables.styl'
 @import '~@/assets/styles/mixins.styl'
   .item-bg
     position: relative
     width: 100%
     height: 1.2rem
-    background: $color1
+    background: #FFCC62
     display: flex
     overflow: hidden
     .item-drag
