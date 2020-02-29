@@ -1,4 +1,4 @@
-# tally-app
+# Tally App
 ### 早期 Axure 制作原型  
 
 ![proto](./prototype.gif)  
