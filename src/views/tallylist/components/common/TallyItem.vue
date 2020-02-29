@@ -45,34 +45,43 @@ export default {
       startX: 0,
       translateX: '',
       showEdit: false,
+      timer: null
     }
   },
   methods: {
     handleTouchStart (e) {
       this.touchStatus = true
-      this.startX = e.touches[0].clientX;
+      this.startX = e.touches[0].clientX
       this.lastNum = this.num
       this.translateX = 'transform:translateX(0px)'
     },
     handleTouchMove (e) {
-      if(this.touchStatus) {
-        const numWidth = this.$refs.num.offsetWidth
-        const touchX = e.touches[0].clientX
-        const disX = touchX > 40 ? touchX - this.startX : 40 - this.startX
-        this.translateX = `transform:translateX(${disX}px)`
-        if (disX <= 0) {
-          const add = Math.floor(-disX/30)
-          this.num = add + this.lastNum        
-        }
-        else if (disX >= 40) {
-          this.num = 0
-          if (disX >= numWidth) {
-            this.translateX = `transform:translateX(${numWidth}px)`
+      if (!this.timer) {
+        this.timer = setTimeout(() => {
+          if(this.touchStatus) {
+            const numWidth = this.$refs.num.offsetWidth
+            const touchX = e.touches[0].clientX
+            const disX = touchX > 40 ? touchX - this.startX : 40 - this.startX
+            this.translateX = `transform:translateX(${disX}px)`
+            if (disX <= 0) {
+              const add = Math.floor(-disX/30)
+              this.num = add + this.lastNum        
+            }
+            else if (disX >= 40) {
+              this.num = 0
+              if (disX >= numWidth) {
+                this.translateX = `transform:translateX(${numWidth}px)`
+              }
+            }
           }
-        }
-      }
+        this.timer = null
+        clearTimeout(this.timer)
+        }, 16) 
+      } 
+      
     },
     handleTouchEnd () {
+      this.touchStatus = false
       this.translateX = 'transform:translateX(0px);transition:all .2s ease'
     },
     handleEditClick () {
