@@ -55,7 +55,6 @@ export default {
       }
     },
     inputLoseFocus() {
-      console.log(`window.pageYOffset: ${window.pageYOffset}`)
       window.scrollTo({
         top: window.pageYOffset,
         behavior: 'smooth',

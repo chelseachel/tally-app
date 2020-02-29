@@ -24,7 +24,6 @@ export default {
       this.$emit('save-list', this.newlist)
     },
     inputLoseFocus() {
-      console.log(`window.pageYOffset: ${window.pageYOffset}`)
       window.scrollTo({
         top: window.pageYOffset,
         behavior: 'smooth',

@@ -27,7 +27,6 @@ export default {
       this.$emit('save-name', this.newName)
     },
     inputLoseFocus() {
-      console.log(`window.pageYOffset: ${window.pageYOffset}`)
       window.scrollTo({
         top: window.pageYOffset,
         behavior: 'smooth',
