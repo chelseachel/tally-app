@@ -1,11 +1,11 @@
 # tally-app
-## 早期 Axure 制作原型  
+### 早期 Axure 制作原型  
 
 ![proto](./prototype.gif)  
-## Web App （扫描二维码查看demo）  
-
-  
+## Web App  
+ 扫描二维码查看demo  
 ![Demo](./Demo.gif)   
+
 
 ## Project setup
 ```
