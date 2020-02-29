@@ -1,4 +1,4 @@
-# Tally App
+# Tally Your List
 ### 早期 Axure 制作原型  
 
 ![proto](./prototype.gif)  
