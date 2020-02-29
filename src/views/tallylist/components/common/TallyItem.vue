@@ -1,29 +1,29 @@
 <template>
   <div class="item-bg" :style="{background: this.bgcolor}">
-    <transition name="slide">
-      <div 
-        class="item-drag"
-        :style="translateX"
-        @touchstart="handleTouchStart"
-        @touchmove="handleTouchMove"
-        @touchend="handleTouchEnd"
-        @click="handleEditClick"
-        >
-        <div class="item-info">{{item.info}}</div>
-        <div class="item-price">{{showPrice}}</div>
-        <div class="leftspace"></div>  
-      </div>
-    </transition>
+    <div 
+      class="item-drag"
+      :style="translateX"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+      @click="handleEditClick"
+      >
+      <div class="item-info">{{item.info}}</div>
+      <div class="item-price">{{showPrice}}</div> 
+      <div class="leftspace"></div> 
+    </div>
     <span class="num" ref="num">{{num}}</span>
-    <tally-edit 
-    :show="showEdit"
-    :key="gernerateId()"
-    v-show="showEdit"
-    @close="handleCloseItem" 
-    @edit-item="handleEditItem"
-    @delete="handleDeleteItem"
-    :existItem="this.item.info" 
-    :existPrice="parseFloat(this.item.price)"></tally-edit>
+    <transition name="fade">
+      <tally-edit 
+      :show="showEdit"
+      :key="gernerateId()"
+      v-show="showEdit"
+      @close="handleCloseItem" 
+      @edit-item="handleEditItem"
+      @delete="handleDeleteItem"
+      :existItem="this.item.info" 
+      :existPrice="parseFloat(this.item.price)"></tally-edit>
+    </transition>
   </div>
 </template>
 
@@ -52,7 +52,7 @@ export default {
       this.touchStatus = true
       this.startX = e.touches[0].clientX;
       this.lastNum = this.num
-      this.translateX = "transform:translateX(0px)"
+      this.translateX = 'transform:translateX(0px)'
     },
     handleTouchMove (e) {
       if(this.touchStatus) {
@@ -73,7 +73,7 @@ export default {
       }
     },
     handleTouchEnd () {
-      this.translateX = "transform:translateX(0px);transition:all .2s ease-out"
+      this.translateX = 'transform:translateX(0px);transition:all .2s ease'
     },
     handleEditClick () {
       this.showEdit = true
@@ -132,7 +132,7 @@ export default {
   }
 }
 </script>
-import
+
 <style lang="stylus" scoped>
 @import '~@/assets/styles/mixins.styl'
   .item-bg
@@ -167,19 +167,23 @@ import
         ellipsis()
       .leftspace
         position: absolute
-        left: -.9rem
-        width: .9rem
+        left: -15%
+        width: 15%
         height: 1.2rem
         background: #fff
     .num
-      width: .9rem
-      min-width: .9rem
+      width: 12%
+      min-width: .95rem
       line-height: 1.2rem
       text-align: center
       font-size: .36rem
       font-weight: 500
       color: #fff
       background: transparent
-  // .slide-enter-active
-  //     transition: transform 1s ease    
+    .fade-enter-active
+    .fade-leave-active
+      transition: opacity .3s ease
+    .fade-enter
+    .fade-leave-to
+      opacity: 0
 </style>

@@ -15,10 +15,11 @@ export default {
   }
 }
 </script>
+
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   .header
-    position: fixed
+    position: sticky
     top: 0
     width: 100%
     height: 1rem

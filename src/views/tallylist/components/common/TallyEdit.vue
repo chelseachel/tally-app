@@ -26,8 +26,8 @@ export default {
   },
   data () {
     return {
-      item: this.existItem || "",
-      price: this.existPrice == 0 ? 0 : this.existPrice || "",
+      item: this.existItem || '',
+      price: this.existPrice == 0 ? 0 : this.existPrice || '',
       showPrompt: false
     }
   },
@@ -89,7 +89,7 @@ export default {
       max-width: 8rem
       position: absolute
       left: 50%
-      top: 50%
+      top: 40%
       padding: .6rem .9rem
       transform: translate(-50%, -50%)
       background: #fff

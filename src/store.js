@@ -22,13 +22,13 @@ export default new Vuex.Store({
           price: 345.68,
           num: 5
         },{
-          info: "左滑增加数量",
+          info: "向左拖动增加数量",
           price: 0,
           num: 0
         },{
-          info: "右滑数量清零",
+          info: "向右拖动数量清零",
           price: 0,
-          num: 0
+          num: 6
         },{
           info: "点击编辑条目",
           price: 0,
@@ -50,13 +50,13 @@ export default new Vuex.Store({
           price: 5,
           num: 20
         },{
-          info: "左滑增加数量",
+          info: "向左拖动增加数量",
           price: 0,
           num: 0
         },{
-          info: "右滑数量清零",
+          info: "向右拖动数量清零",
           price: 0,
-          num: 0
+          num: 6
         },{
           info: "点击编辑条目",
           price: 0,
@@ -66,13 +66,13 @@ export default new Vuex.Store({
         id: "003",
         name: "Meals",
         content: [{
-          info: "左滑增加数量",
+          info: "向左拖动增加数量",
           price: 0,
           num: 0
         },{
-          info: "右滑数量清零",
+          info: "向右拖动数量清零",
           price: 0,
-          num: 0
+          num: 6
         },{
           info: "点击编辑条目",
           price: 0,
@@ -83,13 +83,13 @@ export default new Vuex.Store({
         id: "004",
         name: "Travel",
         content: [{
-          info: "左滑增加数量",
+          info: "向左拖动增加数量",
           price: 0,
           num: 0
         },{
-          info: "右滑数量清零",
+          info: "向右拖动数量清零",
           price: 0,
-          num: 0
+          num: 6
         },{
           info: "点击编辑条目",
           price: 0,
@@ -99,13 +99,13 @@ export default new Vuex.Store({
         id: "005",
         name: "Books",
         content: [{
-          info: "左滑增加数量",
+          info: "向左拖动增加数量",
           price: 0,
           num: 0
         },{
-          info: "右滑数量清零",
+          info: "向右拖动数量清零",
           price: 0,
-          num: 0
+          num: 6
         },{
           info: "点击编辑条目",
           price: 0,

@@ -45,6 +45,7 @@ export default {
   }
 }
 </script>
+
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   .container

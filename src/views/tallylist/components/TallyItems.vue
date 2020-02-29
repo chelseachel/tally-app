@@ -15,10 +15,6 @@ export default {
   components: {
     TallyItem
   },
-  data () {
-    return {
-    }
-  },
   methods: {
     handleDeleteItem (index) {
       this.list.splice(index, 1)
@@ -34,6 +30,5 @@ export default {
 <style lang="stylus" scoped>
   .item-wrapper
     position: relative
-    margin-top: 2.6rem
     overflow: hidden
 </style>

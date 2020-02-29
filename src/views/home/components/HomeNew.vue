@@ -10,7 +10,7 @@ export default {
   name: 'HomeNew',
   data () {
     return {
-      newlist: ""
+      newlist: ''
     }
   },
   methods: {
@@ -38,6 +38,7 @@ export default {
   }
 }
 </script>
+
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   .container

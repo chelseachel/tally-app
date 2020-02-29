@@ -3,7 +3,9 @@
     <div class="title">Tally Lists</div>
     <home-grid :lists="lists"></home-grid>
     <div class="iconfont iconadd3" @click="handleAddClick"></div>
-    <home-new v-if="showNew" @close="handleCloseNew" @save-list="handleSaveNew"></home-new>
+    <transition name="fade">
+      <home-new v-if="showNew" @close="handleCloseNew" @save-list="handleSaveNew"></home-new>
+    </transition>
   </div>
 </template>
 
@@ -20,7 +22,7 @@ export default {
   data () {
     return {
       showNew: false,
-      newlist: ""
+      newlist: ''
     }
   },
   methods: {
@@ -51,10 +53,11 @@ export default {
 <style lang="stylus" scoped>
 @import '~@/assets/styles/variables.styl'
   .title
-    position: fixed
+    position: sticky
+    top: 0
     width: 100%
-    height: 1.72rem
-    line-height: 1.72rem
+    height: 1.8rem
+    line-height: 1.8rem
     font-size: .48rem
     font-weight: 800
     box-sizing: border-box
@@ -69,4 +72,10 @@ export default {
     font-size: 1rem
     color: $themeColor
     z-index: 2
+  .fade-enter-active
+  .fade-leave-active
+    transition: opacity .3s ease
+  .fade-enter
+  .fade-leave-to
+    opacity: 0
 </style>

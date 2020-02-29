@@ -16,11 +16,6 @@
 <script>
 export default {
   name: 'TallyHeader',
-  data () {
-    return {
-      
-    }
-  },
   methods: {
     handleCloseClick (e) {
       if (e.target.className == 'container') {
@@ -42,6 +37,7 @@ export default {
   }
 }
 </script>
+
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   .container
@@ -55,12 +51,12 @@ export default {
     .more
       position: absolute
       top: 1rem
-      right: 1rem
+      right: .8rem
       padding: .28rem .4rem
       background: #fff
       border-radius: .12rem
       box-sizing: border-box
-      box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1);
+      box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1)
       .operate
         line-height: .86rem
         .iconeditor

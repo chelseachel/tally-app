@@ -32,13 +32,12 @@ export default {
   }
 }
 </script>
-import
+
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   @import '~@/assets/styles/mixins.styl'
   .container
     position: relative
-    top: 1.72rem
     width: 92%
     margin: 0 4%
     display: flex

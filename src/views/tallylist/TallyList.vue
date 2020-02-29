@@ -6,27 +6,33 @@
     <div class="iconfont iconadd1" @click="handleAddClick"></div>
     <!-- <div class="instruction">
       <p><b>Instructions:</b></p>
-      <p>● 左滑条目添加数量</p>
-      <p>● 右滑条目数量清零</p>
-      <p>● 点击条目编辑内容</p>
+      <p>● 向左拖动添加数量</p>
+      <p>● 向右拖动数量清零</p>
+      <p>● 点击编辑内容</p>
     </div> -->
-    <tally-edit 
-    :show="showEdit"
-    v-show="showEdit"
-    @close="handleCloseItem" 
-    @save-item="handleSaveItem"></tally-edit>
-    <tally-more 
-    v-show="showMore" 
-    @close="handleCloseMore"
-    @show-name="handleShowName"
-    @delete-list="handleDeleteList"></tally-more>
-    <tally-name 
-    :name="name" 
-    :show="showName"
-    :key="name"
-    v-show="showName"
-    @close="handleCloseName"
-    @save-name="handleSaveName"></tally-name>
+    <transition name="fade">
+      <tally-edit 
+      :show="showEdit"
+      v-show="showEdit"
+      @close="handleCloseItem" 
+      @save-item="handleSaveItem"></tally-edit>
+    </transition>
+    <transition name="fade">
+      <tally-more 
+      v-show="showMore" 
+      @close="handleCloseMore"
+      @show-name="handleShowName"
+      @delete-list="handleDeleteList"></tally-more>
+    </transition>
+    <transition name="fade">
+      <tally-name 
+      :name="name" 
+      :show="showName"
+      :key="name"
+      v-show="showName"
+      @close="handleCloseName"
+      @save-name="handleSaveName"></tally-name>
+    </transition>
   </div>
 </template>
 
@@ -77,6 +83,7 @@ export default {
       this.showMore = false
     },
     handleShowName () {
+      this.showMore = false
       this.showName = true
     },
     handleSaveName (newName) {
@@ -85,7 +92,6 @@ export default {
     },
     handleCloseName () {
       this.showName = false
-      this.showMore = false
     },
     handleDeleteList () {
       this.lists.splice(this.index, 1)
@@ -126,6 +132,12 @@ export default {
     font-size: .9rem
     color: #aaa
     z-index: 2
+  .fade-enter-active
+  .fade-leave-active
+    transition: opacity .3s ease
+  .fade-enter
+  .fade-leave-to
+    opacity: 0
   // .instruction
   //   margin: .4rem
   //   margin-top: .3rem

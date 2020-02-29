@@ -1,5 +1,20 @@
 <template>
   <div id="app">
-    <router-view :key='$route.path'/>
+    <transition mode="out-in">
+      <router-view :key="$route.path"/>
+    </transition>
   </div>
 </template>
+
+<style lang="stylus" scoped>
+  .v-enter
+  .v-leave-to 
+    opacity: 0
+  .v-enter-to
+  .v-leave 
+    opacity: 1 
+  .v-enter-active
+  .v-leave-active 
+    transition: opacity .3s ease
+  
+</style>

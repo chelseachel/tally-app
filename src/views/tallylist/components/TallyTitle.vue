@@ -22,12 +22,12 @@ export default {
   }
 }
 </script>
-import
+
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   @import '~@/assets/styles/mixins.styl'
   .title
-    position: fixed
+    position: sticky
     top: 1rem
     width: 100%
     height: 1.4rem
