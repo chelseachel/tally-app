@@ -1,9 +1,9 @@
 # Tally Your List
-### 早期 Axure 制作原型  
+### Previous prototype made with Axure
 
 ![proto](./prototype.gif)  
 ## Web App  
- 扫描二维码查看demo  
+ Scan QRCode to explore the demo  
 ![Demo](./Demo.gif)   
 
 
