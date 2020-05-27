@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     handleStoreIndex(index) {
-      console.log(index)
       this.$store.commit('changeIndex', index)
     },
     gernerateId (index) {
