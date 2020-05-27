@@ -58,9 +58,8 @@ export default {
       padding: 0 .16rem
       transform: translateX(-50%)
       background: #fff
-      border: 1px solid #eee
       border-radius: .12rem
-      box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1);
+      box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1)
       -webkit-appearance: none
       outline: none
       font-family:Avenir, Helvetica, Arial, sans-serif

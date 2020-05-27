@@ -94,7 +94,7 @@ export default {
       background: #fff
       border-radius: .12rem
       box-sizing: border-box
-      box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1);
+      box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1)
       .edit
         margin-bottom: .2rem
         line-height: .56rem

@@ -129,7 +129,7 @@ export default {
     bottom: .7rem
     left: 50%
     transform: translateX(-50%)
-    font-size: .9rem
+    font-size: 1.16rem
     color: #aaa
     z-index: 2
   .fade-enter-active

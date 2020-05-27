@@ -31,4 +31,5 @@ export default {
   .item-wrapper
     position: relative
     overflow: hidden
+    border-bottom: 1px solid #fafafa
 </style>

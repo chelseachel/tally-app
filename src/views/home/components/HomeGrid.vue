@@ -37,8 +37,8 @@ export default {
   @import '~@/assets/styles/mixins.styl'
   .container
     position: relative
-    width: 92%
-    margin: 0 4%
+    width: 90%
+    margin: 0 5%
     display: flex
     flex-wrap: wrap
     &:before
@@ -51,20 +51,25 @@ export default {
     .grid
       width: 50%
       height: 3.4rem
-      padding: .4rem
+      padding: .38rem
       box-sizing: border-box
-      border-bottom: .02rem solid #eee
+      border-bottom: .02rem solid #efefef
+      overflow: hidden
       .grid-title
         width: 100%
         max-height: 1.6rem
         line-height:.4rem
         font-size: .36rem
         font-weight: 500
-        ellipsis()
+        white-space: normal
+        overflow: hidden
       .grid-item
         margin-top: .1rem
-        font-size: .26rem
+        font-size: .24rem
+        font-weight: 400
         color: #aaa
     .grid:nth-child(odd)
-      border-right: .02rem solid #eee
+      border-right: .02rem solid #efefef
+    .grid:nth-child(even)
+      padding-left: .56rem
 </style>
