@@ -30,15 +30,15 @@ export default {
     position: sticky
     top: 1rem
     width: 100%
-    height: 1.4rem
+    height: 1.3rem
     padding-bottom: .2rem
     background: #fff
     display: flex
     z-index: 99
     .name
       flex: 1
-      height: 1.4rem
-      line-height: 1.4rem
+      height: 1.3rem
+      line-height: 1.3rem
       margin-left: .4rem
       text-align: left
       font-size: .48rem
@@ -47,8 +47,8 @@ export default {
     .total
       position: relative
       flex: 1
-      height: 1.4rem
-      line-height: 1.4rem
+      height: 1.3rem
+      line-height: 1.3rem
       margin-right: .36rem
       text-align: right
       font-size: .36rem

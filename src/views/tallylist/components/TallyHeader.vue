@@ -22,21 +22,21 @@ export default {
     position: sticky
     top: 0
     width: 100%
-    height: 1rem
+    height: 1.1rem
     background: #fff
     z-index: 99
     .iconmenu1
-      height: 1rem
-      line-height: 1rem
+      height: 1.1rem
+      line-height: 1.1rem
       float: left
-      margin-left: .36rem
-      font-size: .36rem
-      color: #aaa
+      margin-left: .38rem
+      font-size: .40rem
+      color: #aaaab0
     .iconswitch
-      height: 1rem
-      line-height: 1rem
+      height: 1.1rem
+      line-height: 1.1rem
       float: right
-      margin-right: .24rem
-      font-size: .46rem
-      color: #aaa     
+      margin-right: .26rem
+      font-size: .52rem
+      color: #aaaab0    
 </style>

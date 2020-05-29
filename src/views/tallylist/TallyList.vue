@@ -130,7 +130,7 @@ export default {
     left: 50%
     transform: translateX(-50%)
     font-size: 1.16rem
-    color: #aaa
+    color: #aaaab0
     z-index: 2
   .fade-enter-active
   .fade-leave-active
@@ -138,6 +138,9 @@ export default {
   .fade-enter
   .fade-leave-to
     opacity: 0
+  .fade-enter-to
+  .fade-leave 
+    opacity: 1   
   // .instruction
   //   margin: .4rem
   //   margin-top: .3rem

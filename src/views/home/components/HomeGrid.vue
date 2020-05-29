@@ -53,7 +53,7 @@ export default {
       height: 3.4rem
       padding: .38rem
       box-sizing: border-box
-      border-bottom: .02rem solid #efefef
+      border-bottom: .02rem solid #f8f8f8
       overflow: hidden
       .grid-title
         width: 100%
@@ -63,13 +63,14 @@ export default {
         font-weight: 500
         white-space: normal
         overflow: hidden
+        text-overflow: ellipsis
       .grid-item
         margin-top: .1rem
         font-size: .24rem
         font-weight: 400
         color: #aaa
     .grid:nth-child(odd)
-      border-right: .02rem solid #efefef
+      border-right: .02rem solid #f8f8f8
     .grid:nth-child(even)
       padding-left: .56rem
 </style>
