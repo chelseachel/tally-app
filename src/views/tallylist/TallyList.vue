@@ -3,7 +3,7 @@
     <tally-header @showmore="handleShowMore"></tally-header>
     <tally-title :name="name" :total="total"></tally-title>
     <tally-items :list="list" :name="name" :key="name+'list'"></tally-items>
-    <div class="iconfont iconadd1" @click="handleAddClick"></div>
+    <div class="iconfont iconadd1" :class="{rotate: rotateIcon}" @click="handleAddClick"></div>
     <!-- <div class="instruction">
       <p><b>Instructions:</b></p>
       <p>● 向左拖动添加数量</p>
@@ -58,15 +58,18 @@ export default {
     return {
       showEdit: false,
       showMore: false,
-      showName: false
+      showName: false,
+      rotateIcon: false
     }
   },
   methods: {
     handleAddClick () {
       this.showEdit = true
+      this.rotateIcon = true
     },
     handleCloseItem () {
       this.showEdit = false
+      this.rotateIcon = false
     },
     handleSaveItem (item, price) {
       this.list.push({
@@ -74,7 +77,7 @@ export default {
         price: price,
         num: 0
       })
-      this.showEdit = false
+      this.handleCloseItem()
     },
     handleShowMore () {
       this.showMore = true
@@ -124,26 +127,34 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .iconadd1
-    position: fixed
-    bottom: .7rem
-    left: 50%
-    transform: translateX(-50%)
-    font-size: 1.16rem
-    color: #aaaab0
-    z-index: 2
-  .fade-enter-active
-  .fade-leave-active
-    transition: opacity .3s ease
-  .fade-enter
-  .fade-leave-to
-    opacity: 0
-  .fade-enter-to
-  .fade-leave 
-    opacity: 1   
-  // .instruction
-  //   margin: .4rem
-  //   margin-top: .3rem
-  //   line-height: .6rem
-  //   color: #D7D7D7
+  .list
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    .iconadd1
+      position: fixed
+      bottom: .7rem
+      left: 50%
+      transform: translateX(-50%)
+      font-size: 1.16rem
+      color: #aaaab0
+      z-index: 2
+      transition: all .3s
+    .rotate
+      transform: translateX(-50%) rotate(45deg)
+    .fade-enter-active
+    .fade-leave-active
+      transition: opacity .3s ease
+    .fade-enter
+    .fade-leave-to
+      opacity: 0
+    .fade-enter-to
+    .fade-leave 
+      opacity: 1   
+    // .instruction
+    //   margin: .4rem
+    //   margin-top: .3rem
+    //   line-height: .6rem
+    //   color: #D7D7D7
 </style>
