@@ -1,10 +1,10 @@
 <template>
   <div class="container" @click="handleCloseClick">
     <div class="edit-box">
-      <div class="edit">ITEM
+      <div class="edit">Item
         <input v-model="item" type="text" name="item" ref="input">
       </div>
-      <div class="edit">PRICE
+      <div class="edit">Price
         <input v-model="price" type="text" name="price">
       </div>
       <div class="prompt" v-show="showPrompt">请输入有效的内容</div>
@@ -98,28 +98,28 @@ export default {
       .edit
         margin-bottom: .2rem
         line-height: .56rem
-        font-size: .28rem
-        color: #aaa
+        font-weight: 500
         input
           width: 100%
           height: .72rem
-          border: 1px solid #eee
+          background: #efefef
           border-radius: .06rem
           box-sizing: border-box
           padding: 0 .16rem
           -webkit-appearance: none
           outline: none
           font-family:Avenir, Helvetica, Arial, sans-serif
+          font-size: .28rem
           color: $color
       .prompt
         line-height: .68rem
         color: $themeColor
       .button-wrapper
-        margin-top: .5rem
+        margin-top: .56rem
         display: flex
         justify-content: space-around
         button
-          padding: .1rem .36rem
+          padding: .12rem .36rem
           border-radius: .68rem
           outline: none
           font-size: .28rem
@@ -127,11 +127,5 @@ export default {
         .save
           background: $themeColor
         .remove
-          background: #D7D7D7
-      // .icontrash
-      //   position: absolute
-      //   top: .24rem
-      //   right: .24rem
-      //   font-size: .5rem
-      //   color: #aaa
+          background: #aaaab0
 </style>
