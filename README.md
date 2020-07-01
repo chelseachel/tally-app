@@ -1,23 +1,23 @@
 # Tally App 
-交互式记账清单
-#### 交互演示
+## 交互式记账清单
+交互演示
 
 ![proto](./prototype.gif)  
-## Demo 
+### Demo 
  Scan QRCode to explore the demo  
 ![Demo](./Demo.gif)  
 
-## 应用设计
+### 应用设计
 * SPA 单页面应用
 * 路由页面
   * 主页目录
   * 清单详情页
 * 移动端响应式布局
 
-## 技术栈
+### 技术栈
 Vue | Vue Router | Vuex | Stylus
 
-## 功能特性
+### 功能特性
 #### 主页<br>
 * 新增清单
 * 进入清单<br>
