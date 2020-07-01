@@ -14,7 +14,7 @@ Scan QRCode to explore the demo<br>
   * 清单详情页
 * 移动端响应式布局
 #### 技术栈
-* Vue | Vue Router | Vuex | Stylus
+> Vue | Vue Router | Vuex | Stylus
 ## 功能特性
 #### 主页<br>
 * 新增清单
