@@ -1,9 +1,9 @@
 # Tally App 
 交互式记账清单
-### Previous prototype made with Axure
+#### 交互演示
 
 ![proto](./prototype.gif)  
-## Web App  
+## Demo 
  Scan QRCode to explore the demo  
 ![Demo](./Demo.gif)  
 
