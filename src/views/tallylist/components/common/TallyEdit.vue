@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       item: this.existItem || '',
-      price: this.existPrice == 0 ? 0 : this.existPrice || '',
+      price: this.existPrice === 0 ? 0 : this.existPrice || '',
       showPrompt: false
     }
   },
@@ -39,10 +39,10 @@ export default {
       }
     },
     handleSaveClick () {
-      if (isNaN(this.price) || this.item.length == 0 || this.price.length == 0) {
+      if (isNaN(this.price) || this.item.length === 0 || this.price.length === 0) {
         this.showPrompt = true       
       } else {
-        if((typeof this.existItem == 'string') && (typeof this.existPrice == 'number')) {
+        if((typeof this.existItem === 'string') && (typeof this.existPrice === 'number')) {
           this.showPrompt = false
           this.$emit('edit-item', this.item, this.price)
         } else {

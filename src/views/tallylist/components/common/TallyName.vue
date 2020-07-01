@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     handleCloseClick (e) {
-      if (e.target.className == 'container') {
+      if (e.target.className === 'container') {
         this.$emit('close')
       }
     },
