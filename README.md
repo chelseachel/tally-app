@@ -1,22 +1,19 @@
 # Tally App 
 ## 交互式记账清单
-交互演示
-
+> Vue + Vue Router + Vuex + Stylus
+### 交互演示
 ![proto](./prototype.gif)  
-### Demo 
- Scan QRCode to explore the demo  
+### Online Demo 
+Scan QRCode to explore the demo<br>
+请用手机扫描二维码查看<br>
 ![Demo](./Demo.gif)  
-
-### 应用设计
+<br>
+## 应用设计
 * SPA 单页面应用
 * 路由页面
   * 主页目录
   * 清单详情页
 * 移动端响应式布局
-
-### 技术栈
-Vue | Vue Router | Vuex | Stylus
-
 ### 功能特性
 #### 主页<br>
 * 新增清单
@@ -41,9 +38,9 @@ Vue | Vue Router | Vuex | Stylus
 * 阻止浏览器默认下拉
 
 
+<br>
 
-
-## Project setup
+## 安装
 ```
 npm install
 ```
