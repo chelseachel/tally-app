@@ -1,5 +1,6 @@
 # Tally App 
 ## 交互式记账清单
+这个项目缘起于曾经用 Axure 设计的一个交互原型 ：）
 ### 演示
 ![proto](./prototype.gif)  
 ### Online Demo 
