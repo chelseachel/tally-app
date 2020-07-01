@@ -14,7 +14,7 @@ Scan QRCode to explore the demo<br>
   * 主页目录
   * 清单详情页
 * 移动端响应式布局
-### 功能特性
+## 功能特性
 #### 主页<br>
 * 新增清单
 * 进入清单<br>
