@@ -1,6 +1,9 @@
 # Tally App 
 ## 交互式记账清单
+> 技术栈：Vue  |  Vue Router  |  Vuex  |  Stylus 
+
 这个项目缘起于曾经用 Axure 设计的一个交互原型 ：）
+
 ### 演示
 ![proto](./prototype.gif)  
 ### Online Demo 
@@ -14,8 +17,7 @@ Scan QRCode to explore the demo<br>
   * 主页目录
   * 清单详情页
 * 移动端响应式布局
-#### 技术栈
-> Vue | Vue Router | Vuex | Stylus
+
 ## 功能特性
 #### 主页<br>
 * 新增清单
