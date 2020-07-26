@@ -18,11 +18,10 @@
 
 <script>
 export default {
-  name: 'TallyEdit',
+  name: 'EditTallyItem',
   props: {
     existItem: String, 
-    existPrice: Number,
-    show: Boolean
+    existPrice: Number
   },
   data () {
     return {
@@ -42,14 +41,11 @@ export default {
       if (isNaN(this.price) || this.item.length == 0 || this.price.length == 0) {
         this.showPrompt = true       
       } else {
-        if((typeof this.existItem == 'string') && (typeof this.existPrice == 'number')) {
-          this.showPrompt = false
-          this.$emit('edit-item', this.item, this.price)
-        } else {
-          this.showPrompt = false
-          this.$emit('save-item', this.item, this.price)
-          this.item = ""
-          this.price = ""
+        this.showPrompt = false
+        this.$emit('save-item', this.item, this.price)
+        if((typeof this.existItem !== 'string') || (typeof this.existPrice !== 'number')) {
+          this.item = ''
+          this.price = ''
         }
         this.inputLoseFocus()
       }
@@ -61,14 +57,10 @@ export default {
       })
     }
   },
-  watch: {
-    show: function () {
-      if (this.show) {
-        this.$nextTick(function() {
-          this.$refs.input.focus()
-        }, 100)
-      }
-    }
+  mounted () {
+    this.$nextTick(function() {
+      this.$refs.input.focus()
+    }, 100)
   }
 }
 </script>

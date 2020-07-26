@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import TallyItem from './common/TallyItem.vue'
+import TallyItem from './children/TallyItem.vue'
 export default {
-  name: 'TallyItems',
+  name: 'TallyList',
   props: {
     list: Array,
     name: String
