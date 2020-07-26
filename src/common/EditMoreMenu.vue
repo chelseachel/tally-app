@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'TallyHeader',
+  name: 'EditMoreMenu',
   methods: {
     handleCloseClick (e) {
       if (e.target.className === 'container') {

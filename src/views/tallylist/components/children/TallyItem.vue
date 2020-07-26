@@ -14,21 +14,20 @@
     </div>
     <span class="num" ref="num">{{num}}</span>
     <transition name="fade">
-      <tally-edit 
-      :show="showEdit"
+      <edit-tally-item
       :key="gernerateId()"
-      v-show="showEdit"
+      v-if="showEdit"
       @close="handleCloseItem" 
-      @edit-item="handleEditItem"
+      @save-item="handleEditItem"
       @delete="handleDeleteItem"
       :existItem="this.item.info" 
-      :existPrice="parseFloat(this.item.price)"></tally-edit>
+      :existPrice="parseFloat(this.item.price)"></edit-tally-item>
     </transition>
   </div>
 </template>
 
 <script>
-import TallyEdit from './TallyEdit.vue'
+import EditTallyItem from '@/common/EditTallyItem.vue'
 export default {
   name: 'TallyItem',
   props: {
@@ -36,7 +35,7 @@ export default {
     name: String
   },
   components: {
-    TallyEdit
+    EditTallyItem
   },
   data () {
     return {

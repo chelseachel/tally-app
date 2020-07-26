@@ -2,36 +2,28 @@
   <div class="list">
     <tally-header @showmore="handleShowMore"></tally-header>
     <tally-title :name="name" :total="total"></tally-title>
-    <tally-items :list="list" :name="name" :key="name+'list'"></tally-items>
+    <tally-list :list="list" :name="name" :key="name+'list'"></tally-list>
     <div class="iconfont iconadd1" :class="{rotate: rotateIcon}" @click="handleAddClick"></div>
-    <!-- <div class="instruction">
-      <p><b>Instructions:</b></p>
-      <p>● 向左拖动添加数量</p>
-      <p>● 向右拖动数量清零</p>
-      <p>● 点击编辑内容</p>
-    </div> -->
     <transition name="fade">
-      <tally-edit 
-      :show="showEdit"
-      v-show="showEdit"
+      <edit-tally-item
+      v-if="showEdit"
       @close="handleCloseItem" 
-      @save-item="handleSaveItem"></tally-edit>
+      @save-item="handleSaveItem"></edit-tally-item>
     </transition>
     <transition name="fade">
-      <tally-more 
-      v-show="showMore" 
+      <edit-more-menu 
+      v-if="showMore" 
       @close="handleCloseMore"
       @show-name="handleShowName"
-      @delete-list="handleDeleteList"></tally-more>
+      @delete-list="handleDeleteList"></edit-more-menu>
     </transition>
     <transition name="fade">
-      <tally-name 
-      :name="name" 
-      :show="showName"
+      <edit-list-name 
+      :name="name"
       :key="name"
-      v-show="showName"
+      v-if="showName"
       @close="handleCloseName"
-      @save-name="handleSaveName"></tally-name>
+      @save-name="handleSaveName"></edit-list-name>
     </transition>
   </div>
 </template>
@@ -39,20 +31,20 @@
 <script>
 import TallyHeader from './components/TallyHeader.vue'
 import TallyTitle from './components/TallyTitle.vue'
-import TallyItems from './components/TallyItems.vue'
-import TallyEdit from './components/common/TallyEdit.vue'
-import TallyMore from './components/common/TallyMore.vue'
-import TallyName from './components/common/TallyName.vue'
+import TallyList from './components/TallyList.vue'
+import EditTallyItem from '@/common/EditTallyItem.vue'
+import EditMoreMenu from '@/common/EditMoreMenu.vue'
+import EditListName from '@/common/EditListName.vue'
 import { mapState } from 'vuex'
 export default {
-  name: 'TallyList',
+  name: 'List',
   components: {
     TallyHeader,
     TallyTitle,
-    TallyItems,
-    TallyEdit,
-    TallyMore,
-    TallyName
+    TallyList,
+    EditTallyItem,
+    EditMoreMenu,
+    EditListName
   },
   data () {
     return {
@@ -151,10 +143,5 @@ export default {
       opacity: 0
     .fade-enter-to
     .fade-leave 
-      opacity: 1   
-    // .instruction
-    //   margin: .4rem
-    //   margin-top: .3rem
-    //   line-height: .6rem
-    //   color: #D7D7D7
+      opacity: 1 
 </style>

@@ -1,20 +1,19 @@
 <template>
   <div class="container" @click="handleCloseClick">
-    <input class="name" ref="input" v-model="newName" @blur.prevent="inputLoseFocus">
+    <input class="list-name" ref="input" v-model="listName" @blur.prevent="inputLoseFocus">
     <button @click="handleSaveClick">SAVE</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeNew',
+  name: 'EditListName',
   props: {
-    name: String,
-    show: Boolean
+    name: String
   },
   data () {
     return {
-      newName: this.name
+      listName: this.name || ''
     }
   },
   methods: {
@@ -24,7 +23,7 @@ export default {
       }
     },
     handleSaveClick () {
-      this.$emit('save-name', this.newName)
+        this.$emit('save-name', this.listName)
     },
     inputLoseFocus() {
       window.scrollTo({
@@ -33,14 +32,10 @@ export default {
       })
     }
   },
-  watch: {
-    show: function () {
-      if (this.show) {
-        this.$nextTick(function() {
-          this.$refs.input.focus()
-        }, 100)
-      }
-    }
+  mounted () {
+    this.$nextTick(function() {
+      this.$refs.input.focus()
+    }, 100)
   }
 }
 </script>
@@ -55,7 +50,7 @@ export default {
     bottom: 0
     background: rgba(170,170,170,.2)
     z-index: 100
-    .name
+    .list-name
       width: 90%
       max-width: 8rem
       height: 1.3rem

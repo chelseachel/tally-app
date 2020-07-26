@@ -6,20 +6,20 @@
     <home-grid :lists="lists"></home-grid>
     <div class="iconfont iconadd3" :class="{rotate: rotateIcon}" @click="handleAddClick"></div>
     <transition name="fade">
-      <home-new v-if="showNew" @close="handleCloseNew" @save-list="handleSaveNew"></home-new>
+      <edit-list-name v-if="showNew" @close="handleCloseNew" @save-name="handleSaveNew"></edit-list-name>
     </transition>
   </div>
 </template>
 
 <script>
 import HomeGrid from './components/HomeGrid.vue'
-import HomeNew from './components/HomeNew.vue'
+import EditListName from '@/common/EditListName.vue'
 import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
     HomeGrid,
-    HomeNew
+    EditListName
   },
   data () {
     return {
