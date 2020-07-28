@@ -1,27 +1,28 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Home from '../views/home/Home.vue'
+import List from '../views/tallylist/List.vue'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/list/:id',
-    name: 'List',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/tallylist/List.vue')
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+      meta: {
+        lastPosition: true
+      }
+    },
+    {
+      path: '/list/:id',
+      name: 'List',
+      component: List
+    }
+  ],
+
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
   }
-]
-
-const router = new VueRouter({
-  routes
 })
-
-export default router

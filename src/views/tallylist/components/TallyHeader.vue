@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link tag="div" to="/" class="iconfont iconmenu1"></router-link>
+    <router-link replace tag="div" to="/" class="iconfont iconmenu1"></router-link>
     <div class="iconfont iconswitch" @click="handleShowClick"></div>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
   methods: {
     handleShowClick () {
       this.$emit('showmore')
-    }
+    },
   }
 }
 </script>
