@@ -18,7 +18,7 @@ export default {
   name: 'EditMoreMenu',
   methods: {
     handleCloseClick (e) {
-      if (e.target.className == 'container') {
+      if (e.target.className === 'container') {
         this.$emit('close')
       }
     },
@@ -27,7 +27,7 @@ export default {
     },
     handleDeleteClick () {
       const message = confirm('确定删除整个清单吗？')
-      if (message == true) {
+      if (message === true) {
         this.$nextTick(function() {
           this.$emit('delete-list')
           this.$router.push('/')

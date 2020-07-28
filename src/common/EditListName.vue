@@ -51,7 +51,7 @@ export default {
     background: rgba(170,170,170,.2)
     z-index: 100
     .list-name
-      width: 90%
+      width: 80%
       max-width: 8rem
       height: 1.3rem
       position: absolute
