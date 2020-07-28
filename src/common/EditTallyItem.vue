@@ -46,26 +46,8 @@ export default {
       if (isNaN(this.price) || this.item.length === 0 || this.price.length === 0) {
         this.showPrompt = true       
       } else {
-<<<<<<< HEAD:src/views/tallylist/components/common/TallyEdit.vue
-        if((typeof this.existItem === 'string') && (typeof this.existPrice === 'number')) {
-          this.showPrompt = false
-          this.$emit('edit-item', this.item, this.price)
-        } else {
-          this.showPrompt = false
-          this.$emit('save-item', this.item, this.price)
-          this.item = ""
-          this.price = ""
-=======
         this.showPrompt = false
         this.$emit('save-item', this.item, this.price)
-<<<<<<< HEAD
-        if((typeof this.existItem !== 'string') || (typeof this.existPrice !== 'number')) {
-          this.item = ''
-          this.price = ''
->>>>>>> dev:src/common/EditTallyItem.vue
-        }
-=======
->>>>>>> dev
         this.inputLoseFocus()
       }
     },
