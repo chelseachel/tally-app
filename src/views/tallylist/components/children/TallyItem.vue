@@ -9,8 +9,7 @@
       @click="handleEditClick"
       >
       <div class="item-info">{{item.info}}</div>
-      <div class="item-price">{{showPrice}}</div> 
-      <div class="leftspace"></div> 
+      <div class="item-price">{{showPrice}}</div>
     </div>
     <span class="num" ref="num">{{num}}</span>
     <transition name="fade">
@@ -40,24 +39,34 @@ export default {
   data () {
     return {
       num: this.item.num,
-      touchStatus: false,
+      touchStatus: false,  // touchStatus 决定了 X 方向是否产生滑动行为
+      firstJudge: true, // touchmove时仅判断一次滑动方向
       startX: 0,
+      startY: 0,
       translateX: '',
       showEdit: false,
-      timer: null
+      timer: null,
     }
   },
   methods: {
     handleTouchStart (e) {
       this.touchStatus = true
       this.startX = e.touches[0].clientX
+      this.startY = e.touches[0].clientY
       this.lastNum = this.num
       this.translateX = 'transform:translateX(0px)'
     },
     handleTouchMove (e) {
       if (!this.timer) {
         this.timer = setTimeout(() => {
-          if(this.touchStatus) {
+          if (this.firstJudge) { // 判断一次滑动方向
+            this.touchStatus = this.judgeTouchDirX(e) ? true : false
+            this.firstJudge = false
+          }
+          if(this.touchStatus) { // X 方向滑动行为
+            // if (e.cancelable) {
+            //   e.preventDefault()
+            // }
             const numWidth = this.$refs.num.offsetWidth
             const touchX = e.touches[0].clientX
             const disX = touchX > 40 ? touchX - this.startX : 40 - this.startX
@@ -73,15 +82,26 @@ export default {
               }
             }
           }
-        this.timer = null
-        clearTimeout(this.timer)
+          this.timer = null
+          clearTimeout(this.timer)
         }, 16) 
-      } 
-      
+      }
     },
     handleTouchEnd () {
-      this.touchStatus = false
       this.translateX = 'transform:translateX(0px);transition:all .2s ease'
+      this.touchStatus = false
+      this.firstJudge = true
+    },
+    judgeTouchDirX (e) {
+      const touchX = e.touches[0].clientX
+      const touchY = e.touches[0].clientY
+      const x = touchX - this.startX
+      const y = touchY - this.startY
+      if (Math.abs(x) >= Math.abs(y)) {
+        return true // 判断为 x 方向的 move 行为
+      } else {
+        return false
+      }
     },
     handleEditClick () {
       this.showEdit = true
@@ -159,7 +179,14 @@ export default {
       border-bottom: 1px solid #fafafa
       font-size: .32rem
       display: flex
-      z-index: 2      
+      z-index: 2
+      &:before
+        content: ''
+        position: absolute
+        left: -15%
+        width: 15%
+        height: 1.2rem  
+        background: #fff 
       .item-info
         flex: 1
         margin-left: .4rem
@@ -172,12 +199,6 @@ export default {
         font-size: .28rem
         color: #D7D7D7
         ellipsis()
-      .leftspace
-        position: absolute
-        left: -15%
-        width: 15%
-        height: 1.2rem
-        background: #fff
     .num
       width: 12%
       min-width: .95rem
