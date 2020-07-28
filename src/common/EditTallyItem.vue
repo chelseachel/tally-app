@@ -1,15 +1,15 @@
 <template>
   <div class="container" @click="handleCloseClick">
     <div class="edit-box">
-      <div class="edit">Item
-        <input v-model="item" type="text" name="item" ref="input">
+      <div class="edit">
+        <input v-model="item" type="text" name="item" placeholder="Item" ref="input">
       </div>
-      <div class="edit">Price
-        <input v-model="price" type="text" name="price">
+      <div class="edit">
+        <input v-model="price" type="text" name="price" placeholder="Price">
       </div>
       <div class="prompt" v-show="showPrompt">请输入有效的内容</div>
       <div class="button-wrapper">
-        <button class="remove" @click="$emit('delete')">REMOVE</button>
+        <button class="remove" @click="handleRemoveClick">REMOVE</button>
         <button class="save" @click="handleSaveClick">SAVE</button>
       </div>
     </div>
@@ -32,10 +32,15 @@ export default {
   },
   methods: {
     handleCloseClick (e) {
-      if (e.target.className == 'container') {
+      if (e.target.className === 'container') {
         this.$emit('close')
         this.inputLoseFocus()
       }
+    },
+    handleRemoveClick () {
+      this.$emit('delete')
+      this.$emit('close')
+      this.inputLoseFocus()
     },
     handleSaveClick () {
       if (isNaN(this.price) || this.item.length === 0 || this.price.length === 0) {
@@ -53,11 +58,14 @@ export default {
 =======
         this.showPrompt = false
         this.$emit('save-item', this.item, this.price)
+<<<<<<< HEAD
         if((typeof this.existItem !== 'string') || (typeof this.existPrice !== 'number')) {
           this.item = ''
           this.price = ''
 >>>>>>> dev:src/common/EditTallyItem.vue
         }
+=======
+>>>>>>> dev
         this.inputLoseFocus()
       }
     },
@@ -87,42 +95,44 @@ export default {
     background: rgba(170,170,170,.2)
     z-index: 100
     .edit-box
-      width: 90%
+      width: 86%
       max-width: 8rem
       position: absolute
       left: 50%
       top: 40%
-      padding: .6rem .9rem
+      padding: .8rem .8rem
       transform: translate(-50%, -50%)
       background: #fff
       border-radius: .12rem
       box-sizing: border-box
       box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1)
       .edit
-        margin-bottom: .2rem
-        line-height: .56rem
+        margin-bottom: .46rem
         font-weight: 500
         input
           width: 100%
-          height: .72rem
-          background: #efefef
-          border-radius: .06rem
+          height: .8rem
           box-sizing: border-box
           padding: 0 .16rem
+          border-radius: 0
+          border-bottom: 1px solid #efefef
           -webkit-appearance: none
           outline: none
-          font-family:Avenir, Helvetica, Arial, sans-serif
-          font-size: .28rem
+          font-size: .32rem
           color: $color
       .prompt
-        line-height: .68rem
+        position: absolute
+        top: 3.2rem
+        left: 50%
+        transform: translateX(-50%)
+        font-size: .26rem
         color: $themeColor
       .button-wrapper
-        margin-top: .56rem
+        margin-top: .86rem
         display: flex
         justify-content: space-around
         button
-          padding: .12rem .36rem
+          padding: .12rem .35rem
           border-radius: .68rem
           outline: none
           font-size: .28rem
@@ -130,5 +140,5 @@ export default {
         .save
           background: $themeColor
         .remove
-          background: #aaaab0
+          background: #bbbbc0
 </style>

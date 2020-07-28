@@ -117,13 +117,6 @@ export default {
     handleDeleteItem () {
       this.showEdit = false
       this.$emit('delete')
-      this.inputLoseFocus()
-    },
-    inputLoseFocus() {
-      window.scrollTo({
-        top: window.pageYOffset,
-        behavior: 'smooth',
-      })
     },
     gernerateId () {
       let id = this.item.info + this.name
