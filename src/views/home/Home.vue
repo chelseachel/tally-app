@@ -64,10 +64,10 @@ export default {
       'lists'
     ])
   },
-  created() {
+  deactivated() {
     this.showFixed = false
   },
-  mounted() {
+  activated() {
     const timer = setTimeout(() => {
       this.showFixed = true
       clearTimeout(timer);
@@ -106,20 +106,12 @@ export default {
       transform: translateX(-50%)
       font-size: 1.2rem
       color: $themeColor
+      background: #fff
+      border-radius: 50%
       z-index: 2
       transition: all .3s
     .rotate
       transform: translateX(-50%) rotate(45deg)
-      &:after
-        content: ''
-        position: absolute
-        top: .2rem
-        left: .2rem
-        width: .8rem
-        height: .8rem
-        border-radius: 50%
-        background: #fff
-        z-index:-1
     .fade-enter-active
     .fade-leave-active
       transition: opacity .3s ease-in

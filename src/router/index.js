@@ -10,10 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home,
-      meta: {
-        lastPosition: true
-      }
+      component: Home
     },
     {
       path: '/list/:id',
