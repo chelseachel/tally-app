@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <transition :name="transitionName" mode="out-in">
-      <router-view :key="$route.path"/>
+      <keep-alive include="Home">
+        <router-view :key="$route.path"/>
+      </keep-alive>
     </transition>
   </div>
 </template>

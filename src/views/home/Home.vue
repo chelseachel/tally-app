@@ -64,10 +64,10 @@ export default {
       'lists'
     ])
   },
-  created() {
+  deactivated() {
     this.showFixed = false
   },
-  mounted() {
+  activated() {
     const timer = setTimeout(() => {
       this.showFixed = true
       clearTimeout(timer);
