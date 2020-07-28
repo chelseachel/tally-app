@@ -9,7 +9,7 @@
       </div>
       <div class="prompt" v-show="showPrompt">请输入有效的内容</div>
       <div class="button-wrapper">
-        <button class="remove" @click="$emit('delete')">REMOVE</button>
+        <button class="remove" @click="handleRemoveClick">REMOVE</button>
         <button class="save" @click="handleSaveClick">SAVE</button>
       </div>
     </div>
@@ -36,6 +36,11 @@ export default {
         this.$emit('close')
         this.inputLoseFocus()
       }
+    },
+    handleRemoveClick () {
+      this.$emit('delete')
+      this.$emit('close')
+      this.inputLoseFocus()
     },
     handleSaveClick () {
       if (isNaN(this.price) || this.item.length == 0 || this.price.length == 0) {
@@ -81,7 +86,7 @@ export default {
       position: absolute
       left: 50%
       top: 40%
-      padding: .6rem .9rem
+      padding: .6rem 1rem
       transform: translate(-50%, -50%)
       background: #fff
       border-radius: .12rem

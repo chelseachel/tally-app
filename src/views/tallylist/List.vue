@@ -13,24 +13,27 @@
     </transition>
     <transition name="fade">
       <edit-tally-item
-      v-if="showEdit"
-      @close="handleCloseItem" 
-      @save-item="handleSaveItem"></edit-tally-item>
+        v-if="showEdit"
+        @close="handleCloseItem" 
+        @save-item="handleSaveItem"
+      ></edit-tally-item>
     </transition>
     <transition name="fade">
       <edit-more-menu 
-      v-if="showMore" 
-      @close="handleCloseMore"
-      @show-name="handleShowName"
-      @delete-list="handleDeleteList"></edit-more-menu>
+        v-if="showMore" 
+        @close="handleCloseMore"
+        @show-name="handleShowName"
+        @delete-list="handleDeleteList"
+      ></edit-more-menu>
     </transition>
     <transition name="fade">
       <edit-list-name 
-      :name="name"
-      :key="name"
-      v-if="showName"
-      @close="handleCloseName"
-      @save-name="handleSaveName"></edit-list-name>
+        :name="name"
+        :key="name"
+        v-if="showName"
+        @close="handleCloseName"
+        @save-name="handleSaveName"
+      ></edit-list-name>
     </transition>
   </div>
 </template>
