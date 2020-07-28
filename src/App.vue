@@ -1,19 +1,52 @@
 <template>
   <div id="app">
-    <transition mode="out-in">
+    <transition :name="transitionName" mode="out-in">
       <router-view :key="$route.path"/>
     </transition>
   </div>
 </template>
 
+<script>
+  export default {
+    name: 'App',
+    data() {
+      return {
+        transitionName: 'into'
+      }
+    },
+    watch: {
+      $route(to,from) {
+        const toDepth = to.path.split('/').length
+        const fromDepth = from.path.split('/').length
+        this.transitionName = toDepth > fromDepth ? 'into' : 'outof' 
+      }
+    },
+  }
+</script>
+
 <style lang="stylus" scoped>
-  .v-enter
-  .v-leave-to 
+  .into-enter
     opacity: 0
-  .v-enter-to
-  .v-leave 
+    transform: scale(.8)
+  .into-leave-to 
+    opacity: 0
+    transform: scale(1.2)
+  .into-enter-to
+  .into-leave 
     opacity: 1 
-  .v-enter-active
-  .v-leave-active 
-    transition: all .2s
+  .into-enter-active
+  .into-leave-active 
+    transition: all .16s ease-in
+  .outof-enter
+    opacity: 0
+    transform: scale(1.2)
+  .outof-leave-to 
+    opacity: 0
+    transform: scale(.8)
+  .outof-enter-to
+  .outof-leave 
+    opacity: 1 
+  .outof-enter-active
+  .outof-leave-active 
+    transition: all .16s ease-in
 </style>

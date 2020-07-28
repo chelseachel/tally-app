@@ -1,12 +1,23 @@
 <template>
   <div class="home">
-    <div class="title">
+    <div class="title" :style="showFixed ? {position:'sticky'} : {position:'relative'}">
       <p>Tally <span>Lists</span></p>
     </div>
     <home-grid :lists="lists"></home-grid>
-    <div class="iconfont iconadd3" :class="{rotate: rotateIcon}" @click="handleAddClick"></div>
     <transition name="fade">
-      <edit-list-name v-if="showNew" @close="handleCloseNew" @save-name="handleSaveNew"></edit-list-name>
+      <div 
+        class="iconfont iconadd3"
+        v-if="showFixed"
+        :class="{rotate: rotateIcon}" 
+        @click="handleAddClick"
+      ></div>
+    </transition>
+    <transition name="fade">
+      <edit-list-name 
+        v-if="showNew" 
+        @close="handleCloseNew" 
+        @save-name="handleSaveNew"
+      ></edit-list-name>
     </transition>
   </div>
 </template>
@@ -23,6 +34,7 @@ export default {
   },
   data () {
     return {
+      showFixed: false,
       showNew: false,
       newlist: '',
       rotateIcon: false
@@ -51,6 +63,15 @@ export default {
     ...mapState([
       'lists'
     ])
+  },
+  created() {
+    this.showFixed = false
+  },
+  mounted() {
+    const timer = setTimeout(() => {
+      this.showFixed = true
+      clearTimeout(timer);
+    }, 200)
   }
 }
 </script>
@@ -80,7 +101,7 @@ export default {
         color: $color
     .iconadd3
       position: fixed
-      bottom: .6rem
+      bottom: .9rem
       left: 50%
       transform: translateX(-50%)
       font-size: 1.2rem
@@ -101,7 +122,7 @@ export default {
         z-index:-1
     .fade-enter-active
     .fade-leave-active
-      transition: opacity .3s ease
+      transition: opacity .3s ease-in
     .fade-enter
     .fade-leave-to
       opacity: 0

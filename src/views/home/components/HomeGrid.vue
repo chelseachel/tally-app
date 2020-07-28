@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="container">
-      <router-link tag="li" :to="'/list/' + index" 
+      <router-link replace tag="li" :to="'/list/' + index"
       class="grid" 
       v-for="(item, index) in lists" :key="index"
       @click.native="handleStoreIndex(index)"
@@ -23,7 +23,7 @@ export default {
   methods: {
     handleStoreIndex(index) {
       this.$store.commit('changeIndex', index)
-    }
+    },
   }
 }
 </script>

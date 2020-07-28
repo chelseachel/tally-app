@@ -3,7 +3,14 @@
     <tally-header @showmore="handleShowMore"></tally-header>
     <tally-title :name="name" :total="total"></tally-title>
     <tally-list :list="list" :name="name" :key="name+'list'"></tally-list>
-    <div class="iconfont iconadd1" :class="{rotate: rotateIcon}" @click="handleAddClick"></div>
+    <transition name="fade">
+      <div 
+        class="iconfont iconadd1"
+        v-if="showFixed"
+        :class="{rotate: rotateIcon}" 
+        @click="handleAddClick"
+      ></div>
+    </transition>
     <transition name="fade">
       <edit-tally-item
       v-if="showEdit"
@@ -48,6 +55,7 @@ export default {
   },
   data () {
     return {
+      showFixed: false,
       showEdit: false,
       showMore: false,
       showName: false,
@@ -114,6 +122,15 @@ export default {
       }
       return total
     }
+  },
+  created() {
+    this.showFixed = false
+  },
+  mounted() {
+    const timer = setTimeout(() => {
+      this.showFixed = true
+      clearTimeout(timer);
+    }, 200)
   }
 }
 </script>
@@ -137,7 +154,7 @@ export default {
       transform: translateX(-50%) rotate(45deg)
     .fade-enter-active
     .fade-leave-active
-      transition: opacity .3s ease
+      transition: opacity .3s ease-in
     .fade-enter
     .fade-leave-to
       opacity: 0
