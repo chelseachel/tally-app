@@ -88,9 +88,13 @@ export default {
       }
     },
     handleTouchEnd () {
-      this.translateX = 'transform:translateX(0px);transition:all .2s ease'
-      this.touchStatus = false
-      this.firstJudge = true
+      const timer = setTimeout(() => { // 解决 touchmove 的 setTimeout 有延时
+        this.translateX = 'transform:translateX(0px);transition:all .2s ease'
+        this.touchStatus = false
+        this.firstJudge = true
+        clearTimeout(timer)
+      }, 18)
+      
     },
     judgeTouchDirX (e) {
       const touchX = e.touches[0].clientX
