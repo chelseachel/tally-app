@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <ul class="container">
+  <div class="container">
+    <ul class="wrapper">
       <router-link replace tag="li" :to="'/list/' + index"
       class="grid" 
       v-for="(item, index) in lists" :key="index"
@@ -31,7 +31,15 @@ export default {
 <style lang="stylus" scoped>
   @import '~@/assets/styles/variables.styl'
   @import '~@/assets/styles/mixins.styl'
-  .container
+ .container
+  overflow: auto
+  overflow-x: hidden
+  position: absolute
+  top: 1.8rem
+  left: 0
+  right: 0
+  bottom: 0 
+  .wrapper
     position: relative
     width: 90%
     margin: 0 5%
