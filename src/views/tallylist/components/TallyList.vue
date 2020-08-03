@@ -29,6 +29,11 @@ export default {
 
 <style lang="stylus" scoped>
   .item-wrapper
-    position: relative
+    overflow: auto
+    position: absolute
+    top: 2.6rem
+    left: 0
+    right: 0
+    bottom: 0
     border-bottom: 1px solid #fafafa
 </style>

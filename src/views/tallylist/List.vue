@@ -143,7 +143,8 @@ export default {
     position: absolute
     top: 0
     left: 0
-    width: 100%
+    right: 0
+    bottom:0
     .iconadd1
       position: fixed
       bottom: .7rem
