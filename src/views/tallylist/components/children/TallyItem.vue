@@ -2,7 +2,7 @@
   <div class="item-bg" :style="{background: this.bgcolor}">
     <div 
       class="item-drag"
-      :style="translateX"
+      :style="translateStyle"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
@@ -39,16 +39,52 @@ export default {
   data () {
     return {
       num: this.item.num,
+      numWidth: 0,
       touchStatus: false,  // touchStatus 决定了 X 方向是否产生滑动行为
       firstJudge: true, // touchmove时仅判断一次滑动方向
       startX: 0,
       startY: 0,
-      translateX: '',
+      transX: 0,
       showEdit: false,
       timer: null,
     }
   },
+  computed: {
+    showPrice: function () {
+      return `¥${parseFloat(this.item.price).toFixed(2)}`
+    },
+    translateStyle: function () {
+      return {
+        transform: `translateX(${this.transX}px)`,
+        transitionDuration: this.touchStatus ? '0s' : '.2s',
+      }
+    },
+    bgcolor: function() {
+      let bg
+      if (this.num >= 0) {
+        bg = '#FFCC62'
+        if (this.num >= 2) {
+          bg = '#FFA655'
+          if (this.num >= 4) {
+            bg = '#FF8951'
+            if (this.num >= 6) {
+              bg = '#FE7350'
+              if (this.num >= 8) {
+                bg = '#FF5551'
+              }
+            }
+          }
+        }
+      }
+      return bg
+    }
+  },
   methods: {
+    getNumWidth() {
+      if(this.$refs.num) {
+        return this.$refs.num.offsetWidth
+      }
+    },
     handleTouchStart (e) {
       this.touchStatus = true
       this.startX = e.touches[0].clientX
@@ -57,44 +93,42 @@ export default {
       this.translateX = 'transform:translateX(0px)'
     },
     handleTouchMove (e) {
-      if (!this.timer) {
-        this.timer = setTimeout(() => {
-          if (this.firstJudge) { // 判断一次滑动方向
-            this.touchStatus = this.judgeTouchDirX(e) ? true : false
-            this.firstJudge = false
-          }
-          if(this.touchStatus) { // X 方向滑动行为
-            // if (e.cancelable) {
-            //   e.preventDefault()
-            // }
-            const numWidth = this.$refs.num.offsetWidth
+      if (this.firstJudge) { // 判断一次滑动方向
+        this.touchStatus = this.judgeTouchDirX(e) ? true : false
+        this.firstJudge = false
+      }
+      if(this.touchStatus) { // X 方向滑动行为
+        if (typeof e.cancelable !== 'boolean' || e.cancelable) {
+          e.preventDefault()
+        }
+        if (!this.timer) {
+          this.timer = setTimeout(() => {
             const touchX = e.touches[0].clientX
-            const disX = touchX > 40 ? touchX - this.startX : 40 - this.startX
-            this.translateX = `transform:translateX(${disX}px)`
-            if (disX <= 0) {
-              const add = Math.floor(-disX/30)
+            const deltaX = touchX > 40 ? touchX - this.startX : 40 - this.startX
+            this.transX = deltaX
+            if (deltaX <= 0) {
+              const add = Math.floor(-deltaX/30)
               this.num = add + this.lastNum        
             }
-            else if (disX >= 40) {
+            else if (deltaX >= 40) {
               this.num = 0
-              if (disX >= numWidth) {
-                this.translateX = `transform:translateX(${numWidth}px)`
+              if (deltaX >= this.numWidth) {
+                this.transX = this.numWidth
               }
             }
-          }
-          this.timer = null
-          clearTimeout(this.timer)
-        }, 16) 
+            this.timer = null
+            clearTimeout(this.timer)
+          }, 16) 
+        }
       }
     },
     handleTouchEnd () {
       const timer = setTimeout(() => { // 解决 touchmove 的 setTimeout 有延时
-        this.translateX = 'transform:translateX(0px);transition:all .2s ease'
         this.touchStatus = false
+        this.transX = 0
         this.firstJudge = true
         clearTimeout(timer)
       }, 18)
-      
     },
     judgeTouchDirX (e) {
       const touchX = e.touches[0].clientX
@@ -127,29 +161,8 @@ export default {
       return id
     }
   },
-  computed: {
-    showPrice: function () {
-      return `¥${parseFloat(this.item.price).toFixed(2)}`
-    },
-    bgcolor: function() {
-      let bg
-      if (this.num >= 0) {
-        bg = '#FFCC62'
-        if (this.num >= 2) {
-          bg = '#FFA655'
-          if (this.num >= 4) {
-            bg = '#FF8951'
-            if (this.num >= 6) {
-              bg = '#FE7350'
-              if (this.num >= 8) {
-                bg = '#FF5551'
-              }
-            }
-          }
-        }
-      }
-      return bg
-    }
+  mounted () {
+    this.numWidth = this.getNumWidth()
   },
   updated () {
     this.item.num = this.num
@@ -169,13 +182,14 @@ export default {
     .item-drag
       position: relative
       flex: 1
+      display: flex
       height: 1.2rem
       line-height: 1.2rem
       background: #fff
       box-sizing: border-box
       border-bottom: 1px solid #fafafa
       font-size: .32rem
-      display: flex
+      transition: all 0s ease
       z-index: 2
       &:before
         content: ''
