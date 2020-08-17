@@ -8,6 +8,26 @@ export default new Vuex.Store({
     index: 0,
     lists: [{
         id: "001",
+        name: "Meals",
+        content: [{
+          info: "Milk",
+          price: 5,
+          num: 1
+        },{
+          info: "Bread",
+          price: 6,
+          num: 3
+        },{
+          info: "Apple",
+          price: 3,
+          num: 5
+        },{
+          info: "Eggs",
+          price: 1,
+          num: 6
+        }]
+      }, {
+        id: "002",
         name: "Furniture",
         content: [{
           info: "Double Bed",
@@ -22,94 +42,45 @@ export default new Vuex.Store({
           price: 345.68,
           num: 5
         },{
-          info: "向左拖动增加数量",
-          price: 0,
-          num: 0
-        },{
-          info: "向右拖动数量清零",
-          price: 0,
+          info: "Chair",
+          price: 599,
           num: 6
-        },{
-          info: "点击编辑条目",
-          price: 0,
-          num: 0
         }]
-      }, {
-        id: "002",
-        name: "Necessities",
-        content: [{
-          info: "Tissue",
-          price: 19.9,
-          num: 4
-        },{
-          info: "Water",
-          price: 16.8,
-          num: 2
-        },{
-          info: "Mask",
-          price: 5,
-          num: 20
-        },{
-          info: "向左拖动增加数量",
-          price: 0,
-          num: 0
-        },{
-          info: "向右拖动数量清零",
-          price: 0,
-          num: 6
-        },{
-          info: "点击编辑条目",
-          price: 0,
-          num: 0
-        }]
-      }, {
+      },{
         id: "003",
-        name: "Meals",
-        content: [{
-          info: "向左拖动增加数量",
-          price: 0,
-          num: 0
-        },{
-          info: "向右拖动数量清零",
-          price: 0,
-          num: 6
-        },{
-          info: "点击编辑条目",
-          price: 0,
-          num: 0
-        }]
-      },
-        {
-        id: "004",
         name: "Travel",
         content: [{
-          info: "向左拖动增加数量",
-          price: 0,
-          num: 0
-        },{
-          info: "向右拖动数量清零",
-          price: 0,
-          num: 6
-        },{
-          info: "点击编辑条目",
-          price: 0,
-          num: 0
+          info: "Example",
+          price: 10,
+          num: 1
         }]
-      }, {
+      },{
+        id: "004",
+        name: "Business",
+        content: [{
+          info: "Example",
+          price: 10,
+          num: 1
+        }]
+      },{
         id: "005",
-        name: "Books",
+        name: "操作指南",
         content: [{
           info: "向左拖动增加数量",
           price: 0,
-          num: 0
+          num: 1
         },{
           info: "向右拖动数量清零",
           price: 0,
-          num: 6
+          num: 3
         },{
           info: "点击编辑条目",
           price: 0,
-          num: 0
+          num: 5
+        },{
+          info: "右上角可编辑列表",
+          price: 0,
+          num: 6
         }]
       }]
   },
