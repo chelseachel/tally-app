@@ -5,11 +5,11 @@
 这个项目缘起于曾经用 Axure 设计的一个交互原型 ：）
 
 ### 演示
-![proto](./prototype.gif)  
+![proto](https://cdn.jsdelivr.net/gh/chelseachel/tally-app/docs/demo.gif)  
 ### Online Demo 
 Scan QRCode to explore the demo<br>
 请用手机扫描二维码查看<br>
-![Demo](./Demo.gif)  
+![qrcode](https://cdn.jsdelivr.net/gh/chelseachel/tally-app/docs/qrcode.png)  
 <br>
 ## 应用设计
 * SPA 单页面应用
