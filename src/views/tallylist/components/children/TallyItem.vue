@@ -56,7 +56,7 @@ export default {
     translateStyle: function () {
       return {
         transform: `translateX(${this.transX}px)`,
-        transitionDuration: this.touchStatus ? '0s' : '.2s',
+        transitionDuration: this.touchStatus ? '0s' : '.3s',
       }
     },
     bgcolor: function() {
@@ -189,7 +189,7 @@ export default {
       box-sizing: border-box
       border-bottom: 1px solid #fafafa
       font-size: .32rem
-      transition: all 0s ease
+      transition-timing-function: cubic-bezier(.2,.08,.28,1.25)
       z-index: 2
       &:before
         content: ''

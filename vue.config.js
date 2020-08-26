@@ -21,16 +21,6 @@ module.exports = {
     //     productionGzipExtensions: ['js', 'css'],
     //     bundleAnalyzerReport: process.env.npm_config_report
     // },
-    
-    // webpack配置
-    // configureWebpack: {
-    //     plugins: [
-    //         new webpack.ProvidePlugin({
-    //             jQuery: 'jquery',
-    //             $: 'jquery'
-    //         })
-    //     ]
-    // },
     /* 生产环境是否生成 sourceMap 文件，false将提高构建速度 */
     productionSourceMap: false,
     /* 代码保存时是否进行eslint检测 */
