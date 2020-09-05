@@ -5,13 +5,14 @@
         <input v-model="item" type="text" name="item" placeholder="Item" ref="input">
       </div>
       <div class="edit">
-        <input v-model="price" type="text" name="price" placeholder="Price">
+        <input v-model="price" type="number" name="price" placeholder="Price">
       </div>
       <div class="prompt" v-show="showPrompt">请输入有效的内容</div>
       <div class="button-wrapper">
         <button class="remove" @click="handleRemoveClick">REMOVE</button>
         <button class="save" @click="handleSaveClick">SAVE</button>
       </div>
+      <div class="close" @click="handleCloseClick"></div>
     </div>
   </div>
 </template>
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     handleCloseClick (e) {
-      if (e.target.className === 'container') {
+      if (e.target.className === 'container' || e.target.className === 'close') {
         this.$emit('close')
         this.inputLoseFocus()
       }
@@ -81,11 +82,11 @@ export default {
       max-width: 8rem
       position: absolute
       left: 50%
-      top: 40%
-      padding: .8rem .8rem
+      top: 30%
+      padding: .84rem .8rem .74rem
       transform: translate(-50%, -50%)
       background: #fff
-      border-radius: .12rem
+      border-radius: .2rem
       box-sizing: border-box
       box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1)
       .edit
@@ -122,5 +123,27 @@ export default {
         .save
           background: $themeColor
         .remove
-          background: #bbbbc0
+          background: #ddd
+      .close
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        background: transparent;
+        transform: rotate(45deg)
+        &:before
+          content: ''
+          width: 21px
+          height: 1px
+          background: #ddd
+          position: absolute
+          top: 10px
+        &:after
+          content: ''
+          width: 1px
+          height: 21px
+          background: #ddd
+          position: absolute
+          left: 10px
 </style>

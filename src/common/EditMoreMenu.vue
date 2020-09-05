@@ -54,7 +54,7 @@ export default {
       right: .8rem
       padding: .28rem .4rem
       background: #fff
-      border-radius: .12rem
+      border-radius: .2rem
       box-sizing: border-box
       box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1)
       .operate

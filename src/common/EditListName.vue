@@ -60,7 +60,7 @@ export default {
       padding: 0 .16rem
       transform: translateX(-50%)
       background: #fff
-      border-radius: .12rem
+      border-radius: .2rem
       box-shadow: 0 .06rem .2rem -.04rem rgba(18, 22, 33, .1);
       -webkit-appearance: none
       outline: none
