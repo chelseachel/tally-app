@@ -28,7 +28,7 @@ export default {
   @import '~@/assets/styles/mixins.styl'
   .title
     position: sticky
-    top: 1.1rem
+    top: 1.2rem
     width: 100%
     height: 1.3rem
     padding-bottom: .2rem

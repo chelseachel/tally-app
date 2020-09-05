@@ -22,19 +22,19 @@ export default {
     position: sticky
     top: 0
     width: 100%
-    height: 1.1rem
+    height: 1.2rem
     background: #fff
     z-index: 99
     .iconmenu1
-      height: 1.1rem
-      line-height: 1.1rem
+      height: 1.2rem
+      line-height: 1.2rem
       float: left
       margin-left: .38rem
       font-size: .40rem
       color: #aaaab0
     .iconswitch
-      height: 1.1rem
-      line-height: 1.1rem
+      height: 1.2rem
+      line-height: 1.2rem
       float: right
       margin-right: .26rem
       font-size: .52rem

@@ -31,7 +31,7 @@ export default {
   .item-wrapper
     overflow: auto
     position: absolute
-    top: 2.6rem
+    top: 2.7rem
     left: 0
     right: 0
     bottom: 0
