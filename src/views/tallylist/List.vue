@@ -2,7 +2,7 @@
   <div class="list">
     <tally-header @showmore="handleShowMore"></tally-header>
     <tally-title :name="name" :total="total"></tally-title>
-    <tally-list :list="list" :name="name" :key="name+'list'"></tally-list>
+    <tally-list :list="list" :name="name" :listIndex="index" :key="name+'list'"></tally-list>
     <transition name="fade">
       <div 
         class="iconfont iconadd1"
@@ -74,11 +74,15 @@ export default {
       this.showEdit = false
       this.rotateIcon = false
     },
-    handleSaveItem (item, price) {
-      this.list.push({
-        info: item,
+    handleSaveItem (info, price) {
+      const newItem = {
+        info: info,
         price: price,
         num: 0
+      }
+      this.$store.commit('addItem', {
+        newItem,
+        listIndex: this.index
       })
       this.handleCloseItem()
     },
@@ -93,27 +97,25 @@ export default {
       this.showName = true
     },
     handleSaveName (newName) {
-      this.name = newName
+      this.$store.commit('setListName', {
+        index: this.index, 
+        newName: newName
+      })
       this.handleCloseName()
     },
     handleCloseName () {
       this.showName = false
     },
     handleDeleteList () {
-      this.lists.splice(this.index, 1)
+      this.$store.commit('deleteList', this.index)
     }
   }, 
   computed: {
     ...mapState([
       'index', 'lists'
     ]),
-    name: {
-      get () {
-        return this.lists[this.index].name
-      },
-      set (newValue) {
-        this.lists[this.index].name = newValue
-      }
+    name: function () {
+      return this.lists[this.index].name
     },
     list: function () {
       return this.lists[this.index].content

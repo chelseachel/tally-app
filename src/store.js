@@ -85,8 +85,39 @@ export default new Vuex.Store({
       }]
   },
   mutations: {
-    changeIndex(state, index) {
+    changeIndex (state, index) {
       state.index = index
+    },
+    saveNewList (state, newlist) {
+      if (newlist) {
+        state.lists.push({
+          name: newlist,
+          content: []
+        })
+      }
+    },
+    setListName (state, {index, newName}) {
+      state.lists[index].name = newName
+    },
+    deleteList (state, index) {
+      state.lists.splice(index, 1)
+    },
+    addItem (state, {newItem, listIndex}) {
+      const list = state.lists[listIndex]
+      list.content.push(newItem)
+    },
+    setItem (state, {info, price, index, listIndex}) {
+      const item = state.lists[listIndex].content[index]
+      item.info = info
+      item.price = price
+    },
+    setQuantity (state, {num, index, listIndex}) {
+      const item = state.lists[listIndex].content[index]
+      item.num = num
+    },
+    deleteItem (state, {index, listIndex}) {
+      const list  = state.lists[listIndex]
+      list.content.splice(index, 1)
     }
   }
 })
