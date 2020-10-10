@@ -50,12 +50,7 @@ export default {
       this.rotateIcon = false
     },
     handleSaveNew (newlist) {
-      if (newlist) {
-        this.lists.push({
-          name: newlist,
-          content: []
-        })
-      }
+      this.$store.commit('saveNewList', newlist)
       this.handleCloseNew()
     }
   },

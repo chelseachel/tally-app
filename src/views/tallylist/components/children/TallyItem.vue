@@ -31,7 +31,8 @@ export default {
   name: 'TallyItem',
   props: {
     item: Object,
-    name: String
+    name: String,
+    index: Number
   },
   components: {
     EditTallyItem
@@ -61,21 +62,17 @@ export default {
     },
     bgcolor: function() {
       let bg
-      if (this.num >= 0) {
+      if (this.num >= 8) {
+        bg = '#FF5551'
+      } else if (this.num >= 6) {
+        bg = '#FE7350'
+      } else if (this.num >= 4) {
+        bg = '#FF8951'
+      } else if (this.num >= 2) {
+        bg = '#FFA655'
+      } else {
         bg = '#FFCC62'
-        if (this.num >= 2) {
-          bg = '#FFA655'
-          if (this.num >= 4) {
-            bg = '#FF8951'
-            if (this.num >= 6) {
-              bg = '#FE7350'
-              if (this.num >= 8) {
-                bg = '#FF5551'
-              }
-            }
-          }
-        }
-      }
+      } 
       return bg
     }
   },
@@ -148,8 +145,7 @@ export default {
       this.showEdit = false
     },
     handleEditItem (info, price) {
-      this.item.info = info
-      this.item.price = price
+      this.$emit('updateItem', info, price, this.index)
       this.showEdit = false
     },
     handleDeleteItem () {
@@ -165,7 +161,7 @@ export default {
     this.numWidth = this.getNumWidth()
   },
   updated () {
-    this.item.num = this.num
+    this.$emit('updateNum', this.num, this.index)
   }
 }
 </script>

@@ -1,6 +1,15 @@
 <template>
   <div class="item-wrapper">
-    <tally-item v-for="(item, index) in list" :key="gernerateId(index)" :item="item" :name="name" @delete="handleDeleteItem(index)"></tally-item>
+    <tally-item 
+      v-for="(item, index) in list" 
+      :key="gernerateId(index)" 
+      :item="item" 
+      :index="index" 
+      :name="name" 
+      @updateItem="handleSetItem"
+      @updateNum="handleUpdateNum"
+      @delete="handleDeleteItem(index)"
+    ></tally-item>
   </div>
 </template>
 
@@ -10,14 +19,33 @@ export default {
   name: 'TallyList',
   props: {
     list: Array,
-    name: String
+    name: String,
+    listIndex: Number
   },
   components: {
     TallyItem
   },
   methods: {
+    handleSetItem (info, price, index) {
+      this.$store.commit('setItem', {
+        info: info, 
+        price: price, 
+        index: index,
+        listIndex: this.listIndex
+      })
+    },
+    handleUpdateNum (num, index) {
+      this.$store.commit('setQuantity', {
+        num: num,
+        index: index,
+        listIndex: this.listIndex
+      })
+    },
     handleDeleteItem (index) {
-      this.list.splice(index, 1)
+      this.$store.commit('deleteItem', {
+        index: index,
+        listIndex: this.listIndex
+      })
     },
     gernerateId (index) {
       let id = this.name + index
